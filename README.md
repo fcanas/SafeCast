@@ -1,4 +1,4 @@
 SafeCast
 ========
 
-Safe casting for Obective-C
+Safe casting for Objective-C
