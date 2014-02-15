@@ -162,7 +162,7 @@
                                         [obj setNumber:@3];
                                     }], @"Objects that do not implement `-setNumber` should not raise");
     
-    XCTAssertNil([FFCTestObject cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertNil([FFCTestObject cast:a[1]].number, @"a conforming object not included in the index set should not have had methods called on it");
     XCTAssertNil([FFCTestObject cast:a[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
 }
