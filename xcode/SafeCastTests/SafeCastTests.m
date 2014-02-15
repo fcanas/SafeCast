@@ -28,8 +28,11 @@
 #import <XCTest/XCTest.h>
 #import <SafeCast/NSObject+SafeCast.h>
 
-@interface SafeCastTests : XCTestCase
-
+@interface SafeCastTests : XCTestCase {
+    NSString *s;
+    NSArray *a;
+    NSMutableArray *ma;
+}
 @end
 
 @implementation SafeCastTests
@@ -37,7 +40,8 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    s = @"string";
+    a = [NSMutableArray array];
 }
 
 - (void)tearDown
@@ -48,9 +52,7 @@
 
 - (void)testCast
 {
-    NSString *s = @"string";
-    NSArray *a = [NSMutableArray array];
-    NSMutableArray *ma = [NSMutableArray cast:a];
+    ma = [NSMutableArray cast:a];
     
     XCTAssertEqual(ma, a, @"Should successfully cast a (mutable) array to a mutable array");
     XCTAssertNil([NSMutableArray cast:s], @"Should not cast a string to a mutable array");
@@ -59,16 +61,17 @@
 
 - (void)testCastIntoBlock
 {
-//    NSString *s = @"string";
-//    NSArray *a = [NSMutableArray array];
-//    NSMutableArray *ma = [NSMutableArray cast:a];
+    void(^addObjectBlock)(NSMutableArray *) = ^(NSMutableArray *array){
+        [array addObject:s];
+    };
     
-//    void(^addObjectBlock)(NSMutableArray *) = ^()
+    ma = [NSMutableArray cast:a intoBlock:addObjectBlock];
     
-//    XCTAssertEqual(ma, a, @"Should successfully cast a (mutable) array to a mutable array");
-//    XCTAssertNil([NSMutableArray cast:s], @"Should not cast a string to a mutable array");
-//    XCTAssertNil([NSMutableArray cast:[NSArray array]], @"Should not cast an array to a mutable array");
-    XCTFail(@"I haven't written this yet. I need to go make cookies.");
+    XCTAssertEqual(ma, a, @"Should successfully cast a (mutable) array to a mutable array");
+    XCTAssertEqual(a.firstObject, s, @"Should successfully execute the block passed to a cast mutable array.");
+    
+    XCTAssertNil([NSMutableArray cast:s], @"Should not cast a string to a mutable array");
+    XCTAssertNil([NSMutableArray cast:[NSArray array]], @"Should not cast an array to a mutable array");
 }
 
 @end
