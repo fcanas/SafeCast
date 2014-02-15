@@ -29,6 +29,25 @@
 
 @interface NSObject (SafeCast)
 
-+ (instancetype)cast:(id)x;
+/**
+ Returns its parameter if it is of the callee's kind, i.e. a member or a member of a subclass.
+ 
+ The following segments of code are equivalent, and 
+ 
+ @code
+ NSMutableArray *ma;
+ if ([a isKindOfClass:[NSMutableArray class]]) {
+     ma = a;
+ }
+ @endcode
+ 
+ @code
+ NSMutableArray *ma = [NSMutableArray cast:a];
+ @endcode
+ 
+ @param obj An object you would like to cast to the receiving class, only if it is safe to do so.
+ @return The very same object passed as a parameter in a form recognized by the compiler to be an instance of the receiving class.
+ */
++ (instancetype)cast:(id)obj;
 
 @end
