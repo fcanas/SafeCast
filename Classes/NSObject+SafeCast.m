@@ -29,10 +29,21 @@
 
 @implementation NSObject (SafeCast)
 
-+ (instancetype)cast:(id)x
++ (instancetype)cast:(id)obj
 {
-    if ([x isKindOfClass:self]) {
-        return x;
+    if ([obj isKindOfClass:self]) {
+        return obj;
+    }
+    return nil;
+}
+
++ (instancetype)cast:(id)obj intoBlock:(void(^)(id))block
+{
+    if ([obj isKindOfClass:self]) {
+        if (block) {
+            block(obj);
+        }
+        return obj;
     }
     return nil;
 }
