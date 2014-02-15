@@ -31,17 +31,9 @@ Pod::Spec.new do |s|
   s.author             = { "Fabian Canas" => "fcanas@gmail.com" }
   # s.social_media_url = "http://twitter.com/Fabian Canas"
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If this Pod runs only on iOS or OS X, then specify the platform and
-  #  the deployment target. You can optionally include the target after the platform.
-  #
-
-  # s.platform     = :ios
-  # s.platform     = :ios, '5.0'
-
-  #  When using multiple platforms
-  # s.ios.deployment_target = '5.0'
-  # s.osx.deployment_target = '10.7'
+  
+  s.ios.deployment_target = '4.0'
+  s.osx.deployment_target = '10.6'
   s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "v0-alpha.1" }
 
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'

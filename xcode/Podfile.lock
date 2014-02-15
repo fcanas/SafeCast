@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SafeCast: 66c4d1583d807ad6c8ea88ee4c2dc3c951813849
+  SafeCast: 4847a62625667bc26fa7d41ca10942afdc3bf9df
 
 COCOAPODS: 0.29.0
