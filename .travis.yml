@@ -1,0 +1,7 @@
+language: objective-c
+before_install:
+  - cd xcode
+  - rvm get stable
+  - rvm use ruby-2.0.0-p247
+  - gem install cocoapods
+script: xctool -workspace SafeCast.xcworkspace -scheme SafeCast test -sdk iphonesimulator
