@@ -11,9 +11,9 @@ NSMutableArray *mArray = [NSMutableArray cast:array];
 // `mArray` is nil if `array` is not a mutable array, and is `array` if it is.
 ```
 
-## But a Library for _that_?
+## A Whole Library for _that_?
 
-You may not need it. But it has a lot of things going for it.
+Well, first of all, it's _really_ small. And tested. You may not need it. But it has a lot of things going for it.
 
 ### Easy to integrate 
 
