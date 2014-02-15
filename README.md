@@ -92,5 +92,11 @@ or this, depending on how much you like blocks
 }
 ```
 
+## Status
+
+It works. It's usable, stable. But I want to get some feedback on it before pushing out version 0.0.1 on CocoaPods. Method signatures may change. 
+
+Please send feedback, pull-requests, and coffee.
+
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fcanas/safecast/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
