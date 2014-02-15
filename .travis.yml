@@ -1,6 +1,6 @@
 language: objective-c
 before_install:
+  - cd xcode
   - rvm get stable
   - rvm use ruby-2.0.0-p247
-  - cd xcode
 script: xcodebuild -workspace SafeCast.xcworkspace -scheme SafeCast -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO TEST_AFTER_BUILD=YES
