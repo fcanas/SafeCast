@@ -7,54 +7,29 @@
 #
 
 Pod::Spec.new do |s|
-
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  These will help people to find your library, and whilst it
-  #  can feel like a chore to fill in it's definitely to your advantage. The
-  #  summary should be tweet-length, and the description more in depth.
-  #
-
   s.name         = "SafeCast"
   s.version      = "0.0.1"
-  s.summary      = "A short description of SafeCast."
+  s.summary      = "Safe Casting in Objective-C"
 
   s.description  = <<-DESC
-                   A longer description of SafeCast in Markdown format.
+                  * Cast in Objective-C, not in C
+                  * Be Safe
+                  * Be Concice
 
-                   * Think: Why did you write this? What is the focus? What does it do?
-                   * CocoaPods will be using this to generate tags, and improve search results.
-                   * Try to keep it short, snappy and to the point.
-                   * Finally, don't worry about the indent, CocoaPods strips it!
-                   DESC
+                   Objective-C is C, and C can be perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
-  s.homepage     = "http://EXAMPLE/SafeCast"
-  # s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+                   Quite simply, you can do things like this:
 
+                  ```
+                   NSMutableArray *mArray = [NSMutableArray cast:array];
+                   // `mArray` is nil if `array` is not a mutable array, and is `array` if it is.
+                   ```
+                  DESC
 
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Licensing your code is important. See http://choosealicense.com for more info.
-  #  CocoaPods will detect a license file if there is a named LICENSE*
-  #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
-  #
-
-  s.license      = 'MIT (example)'
-  # s.license      = { :type => 'MIT', :file => 'FILE_LICENSE' }
-
-
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the authors of the library, with email addresses. Email addresses
-  #  of the authors by using the SCM log. E.g. $ git log. If no email can be
-  #  found CocoaPods accept just the names.
-  #
-
+  s.homepage     = "https://github.com/fcanas/SafeCast"
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author             = { "Fabian Canas" => "fcanas@gmail.com" }
-  # s.authors          = { "Fabian Canas" => "fcanas@gmail.com", "other author" => "email@address.com" }
-  # s.author           = 'Fabian Canas', 'other author'
   # s.social_media_url = "http://twitter.com/Fabian Canas"
-
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  If this Pod runs only on iOS or OS X, then specify the platform and
@@ -67,28 +42,10 @@ Pod::Spec.new do |s|
   #  When using multiple platforms
   # s.ios.deployment_target = '5.0'
   # s.osx.deployment_target = '10.7'
-
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Specify the location from where the source should be retrieved.
-  #  Supports git, hg, bzr, svn and HTTP.
-  #
-
-  s.source       = { :git => "http://EXAMPLE/SafeCast.git", :tag => "0.0.1" }
-
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any h, m, mm, c & cpp files. For header
-  #  files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
+  s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "v0-alpha.1" }
 
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
-  s.exclude_files = 'Classes/Exclude'
-
+  # s.exclude_files = 'Classes/Exclude'
   # s.public_header_files = 'Classes/**/*.h'
 
 
