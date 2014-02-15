@@ -2,7 +2,7 @@
 
 Safe casting for Objective-C
 
-Objective-C is C, and C can be perilous. Don't blindly cast objects, stick to high-level language features, and write more readable code.
+Objective-C is C, and C can be perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
 Quite simply, you can do things like this:
 
