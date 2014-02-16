@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <SafeCast/NSObject+SafeCast.h>
-#import <SafeCast/SafeCastCollections.h>
+#import <SafeCast/SafeCast.h>
 
 #pragma mark - Test Classes
 

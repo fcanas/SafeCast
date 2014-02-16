@@ -26,7 +26,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <XCTest/XCTest.h>
-#import <SafeCast/NSObject+SafeCast.h>
+#import <SafeCast/SafeCast.h>
 
 @interface SafeCastTests : XCTestCase {
     NSString *s;
