@@ -32,9 +32,7 @@ if (aSelector == NULL) {[[[NSException alloc] initWithName:NSInvalidArgumentExce
 reason:[NSString stringWithFormat: @"Selector passed to %@ must not be nil", NSStringFromSelector(_cmd)]\
 userInfo:nil] raise];}\
 [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
-if ([obj respondsToSelector:aSelector]) {\
-[obj performSelector:aSelector SAFE_CAST_WITH_OBJECT];\
-}}];}
+if ([obj respondsToSelector:aSelector]) {[obj performSelector:aSelector SAFE_CAST_WITH_OBJECT];}}];}
 
 #undef SAFE_CAST_WITH_OBJECT
 #define SAFE_CAST_WITH_OBJECT

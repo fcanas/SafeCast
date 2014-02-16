@@ -41,8 +41,7 @@ return SAFE_CAST_TEST;}];
 - (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {SAFE_CAST_INDEXED_ENUMERATION}
 
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
-{SAFE_CAST_INDEXES_OF_OBJECTS}
+- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class {SAFE_CAST_INDEXES_OF_OBJECTS}
 
 #pragma mark - Protocols
 #undef SAFE_CAST_TEST
@@ -51,5 +50,4 @@ return SAFE_CAST_TEST;}];
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {SAFE_CAST_INDEXED_ENUMERATION}
 
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
-{SAFE_CAST_INDEXES_OF_OBJECTS}
+- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol {SAFE_CAST_INDEXES_OF_OBJECTS}
