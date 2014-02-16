@@ -38,76 +38,12 @@
     }];
 }
 
-#pragma mark - Kind of Class
+#include "SafeCastIndexedEnumeration.h"
 
-- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
+@end
 
-- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsWithOptions:opts usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
-
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
-
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
-{
-    return [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return [obj isKindOfClass:class];
-    }];
-}
-
-#pragma mark Protocols
-
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
-
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsWithOptions:opts usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
-
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-{
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
-
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
-{
-    return [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        return [obj conformsToProtocol:protocol];
-    }];
-}
+@implementation NSOrderedSet (SafeCast)
+    
+#include "SafeCastIndexedEnumeration.h"
 
 @end
