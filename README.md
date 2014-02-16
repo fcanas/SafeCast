@@ -1,6 +1,6 @@
 # SafeCast [![Build Status](https://travis-ci.org/fcanas/SafeCast.png?branch=master)](https://travis-ci.org/fcanas/SafeCast)
 
-* Cast in Objective-C, not in C
+* Cast objects in Objective-C, not in C
 * Be Safe
 * Be Concice
 
@@ -37,6 +37,7 @@ Or a protocol
                                  }]
 ```
 
+SafeCast has quite a few methods like this, all aimed to make it easy to do the right thing.
 
 ## A Whole Library for _that_?
 
