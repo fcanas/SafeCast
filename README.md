@@ -1,6 +1,8 @@
-# SafeCast
+# SafeCast [![Build Status](https://travis-ci.org/fcanas/SafeCast.png?branch=master)](https://travis-ci.org/fcanas/SafeCast)
 
-Safe casting for Objective-C
+* Cast in Objective-C, not in C
+* Be Safe
+* Be Concice
 
 Objective-C is C, and C can be perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
@@ -8,8 +10,33 @@ Quite simply, you can do things like this:
 
 ```
 NSMutableArray *mArray = [NSMutableArray cast:array];
-// `mArray` is nil if `array` is not a mutable array, and is `array` if it is.
+// `mArray` is nil if `array` is not a mutable array, or `array` if it is.
 ```
+
+Or only call methods on collection members that can respond to the selector.
+
+```
+[array makeObjectsSafelyPerformSelector:@selector(method)];
+```
+
+Or enumerate with a block on objects that are of a specific kind.
+
+```
+[array enumerateObjectsOfKind:[MyObject class]
+                   usingBlock:^(MyObject *obj, NSUInteger idx, BOOL *stop) {
+                       [obj setNumber:@3];
+                   }]
+```
+
+Or a protocol
+
+```
+[array enumerateObjectsConformingToProtocol:@protocol(MyProtocol)
+                                 usingBlock:^(id<MyProtocol> *obj, NSUInteger idx, BOOL *stop) {
+                                     [obj setNumber:@3];
+                                 }]
+```
+
 
 ## A Whole Library for _that_?
 
@@ -21,7 +48,7 @@ When it's done, I'll release SafeCast as a [CocoaPod](http://guides.cocoapods.or
 
 ### Be concice and direct with your intent
 
-It definitely takes fewer lines of code. It's my opinion that it's easier to read and think about than the more verbose, safe way of doing it.
+It definitely takes fewer lines of code. It's my opinion that it's easier to read and think about than the more verbose, safe way of doing it. It keeps your safety concerns and checks up front and at a high level.
 
 ### Be Safe
 
@@ -29,7 +56,21 @@ Maybe you know what you're doing. But do you always do the right thing? Do you u
 
 But how many people are in your code base? And how well do they all know Objective-C's C underbelly? More and more developers are coming in having worked with higher-level or dynamic languages, and may not realize what's safe and what's not.
 
-## Examples
+## Status
+
+It works. It's usable and stable. But I want to get some feedback on it before pushing out version 0.0.1 on CocoaPods. Method signatures _will_ change. 
+
+### TODO
+
+* Only `NSArray` has been extended with the helpful safety checks. It is my intention to give similar treatment to other collection classes. I'm looking for some feedback on method signatures and coverage before putting all that work in.
+
+* Methods on categories in a reusable libarary should be namespaced. I haven't done that yet.
+
+Please send feedback, pull-requests, and coffee.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fcanas/safecast/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+<!-- ## Examples
 
 Turn this
 
@@ -90,13 +131,7 @@ or this, depending on how much you like blocks
         [mutableSet intersectSet:set2];
     }];
 }
-```
+``` -->
 
-## Status
 
-It works. It's usable, stable. But I want to get some feedback on it before pushing out version 0.0.1 on CocoaPods. Method signatures may change. 
-
-Please send feedback, pull-requests, and coffee.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fcanas/safecast/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
