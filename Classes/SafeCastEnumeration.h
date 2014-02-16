@@ -25,42 +25,30 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#undef SAFE_CAST_TEST
+
+#define SAFE_CAST_ENUMERATE [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
+
+#define SAFE_CAST_ENUMERATE_WITH_OPTIONS [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
+
 #pragma mark - Kind of Class
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj isKindOfClass:class])
 
 - (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj isKindOfClass:class]) {
-            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
-        }
-    }];
-}
+{SAFE_CAST_ENUMERATE}
 
 - (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj isKindOfClass:class]) {
-            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
-        }
-    }];
-}
+{SAFE_CAST_ENUMERATE_WITH_OPTIONS}
 
-#pragma mark Protocols
+#pragma mark - Protocols
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj conformsToProtocol:protocol])
 
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj conformsToProtocol:protocol]) {
-            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
-        }
-    }];
-}
+{SAFE_CAST_ENUMERATE}
 
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj conformsToProtocol:protocol]) {
-            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
-        }
-    }];
-}
+{SAFE_CAST_ENUMERATE_WITH_OPTIONS}
