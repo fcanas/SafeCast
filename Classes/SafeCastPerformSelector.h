@@ -1,5 +1,5 @@
 //
-//  SafeCastIndexedEnumeration.h
+//  SafeCastPerformSelector.h
 //  Pods
 //
 //  Created by Fabian Canas on 2/15/14.
@@ -25,38 +25,30 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma mark - Kind Of Class
+#pragma mark - Responds to Selector
 
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
 {
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
+    if (aSelector == NULL) {
+        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector: must not be nil" userInfo:nil] raise];
+    }
+    
+    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+        if ([obj respondsToSelector:aSelector]) {
+            [obj performSelector:aSelector];
         }
     }];
 }
 
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
+- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject
 {
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj isKindOfClass:class];
-    }];
-}
-
-#pragma mark - Protocols
-
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
+    if (aSelector == NULL) {
+        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector:withObject: must not be nil" userInfo:nil] raise];
+    }
+    
+    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+        if ([obj respondsToSelector:aSelector]) {
+            [obj performSelector:aSelector withObject:anObject];
         }
-    }];
-}
-
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
-{
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj conformsToProtocol:protocol];
     }];
 }

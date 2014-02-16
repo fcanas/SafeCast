@@ -10,40 +10,52 @@
 
 @implementation NSArray (SafeCast)
 
-#pragma mark - Responds to Selector
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#undef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE (id obj, NSUInteger idx, BOOL *stop)
 
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
-{
-    if (aSelector == NULL) {
-        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector: must not be nil" userInfo:nil] raise];
-    }
-    
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj respondsToSelector:aSelector]) {
-            [obj performSelector:aSelector];
-        }
-    }];
-}
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#undef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS obj,idx,stop
 
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject
-{
-    if (aSelector == NULL) {
-        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector:withObject: must not be nil" userInfo:nil] raise];
-    }
-    
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj respondsToSelector:aSelector]) {
-            [obj performSelector:aSelector withObject:anObject];
-        }
-    }];
-}
-
+#include "SafeCastPerformSelector.h"
+#include "SafeCastEnumeration.h"
 #include "SafeCastIndexedEnumeration.h"
 
 @end
 
 @implementation NSOrderedSet (SafeCast)
-    
+
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#undef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE (id obj, NSUInteger idx, BOOL *stop)
+
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#undef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS obj,idx,stop
+
+#include "SafeCastEnumeration.h"
 #include "SafeCastIndexedEnumeration.h"
+
+@end
+
+@implementation NSSet (SafeCast)
+
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#undef SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE (id obj, BOOL *stop)
+
+#ifdef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#undef SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS
+#endif
+#define SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS obj,stop
+
+#include "SafeCastPerformSelector.h"
+#include "SafeCastEnumeration.h"
 
 @end
