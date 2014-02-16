@@ -440,3 +440,141 @@
 - (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
 @end
+
+@interface NSSet (SafeCast)
+
+#pragma mark - Responds to Selector
+
+/**
+ Sends to each object in the set the message identified by a given selector, starting with the first object and continuing through the set to the last object if and only if the object responds to the given selector.
+ 
+ This method raises an NSInvalidArgumentException if aSelector is NULL.
+ 
+ @param aSelector A selector that identifies the message to send to the objects in the set. The method must not take any arguments, and must not have the side effect of modifying the receiving set.
+ 
+ Availability
+ Available in iOS 2.0 and later.
+ 
+ @see - makeObjectsPerformSelector:
+ @see – makeObjectsPerformSelector:withObject:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
+
+/**
+ Sends the aSelector message to each object in the set, starting with the first object and continuing through the set to the last object if and only if the object responds to the given selector.
+ 
+ This method raises an NSInvalidArgumentException if aSelector is NULL.
+ 
+ @param aSelector A selector that identifies the message to send to the objects in the set. The method must take a single argument of type id, and must not have the side effect of modifying the receiving set.
+ 
+ @param anObject The object to send as the argument to each invocation of the aSelector method.
+ 
+ @see - makeObjectsPerformSelectorSafely:
+ @see – makeObjectsPerformSelector:
+ @see – makeObjectsPerformSelector:withObject:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
+
+/**
+ Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.
+ 
+ If the Block parameter is nil this method will raise an exception.
+ 
+ This method executes synchronously.
+ 
+ @param class
+ The Class objects in the set must be a kind of for the block to be executed on
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
+ @see – makeObjectsPerformSelector:
+ @see – makeObjectsPerformSelector:withObject:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+/**
+ Executes a given block using each object in the set.
+ 
+ @param class
+ The Class objects in the set must be a kind of for the block to be executed on
+ @param opts
+ A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ By default, the enumeration starts with the first object and continues serially through the set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
+ 
+ This method executes synchronously.
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+#pragma mark - Protocols NSSet
+
+/**
+ Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.
+ 
+ If the Block parameter is nil this method will raise an exception.
+ 
+ This method executes synchronously.
+ 
+ @param protocol
+ The Protocol objects in the set must be a kind of for the block to be executed on
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
+ @see – makeObjectsPerformSelector:
+ @see – makeObjectsPerformSelector:withObject:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+/**
+ Executes a given block using each object in the set.
+ 
+ @param protocol
+ The Protocol objects in the set must be a kind of for the block to be executed on
+ @param opts
+ A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ By default, the enumeration starts with the first object and continues serially through the set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
+ 
+ This method executes synchronously.
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+@end

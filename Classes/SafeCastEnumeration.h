@@ -1,5 +1,5 @@
 //
-//  SafeCastIndexedEnumeration.h
+//  SafeCastEnumeration.h
 //  Pods
 //
 //  Created by Fabian Canas on 2/15/14.
@@ -25,38 +25,42 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma mark - Kind Of Class
+#pragma mark - Kind of Class
 
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
         if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
+            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
         }
     }];
 }
 
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
+- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj isKindOfClass:class];
+    [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+        if ([obj isKindOfClass:class]) {
+            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
+        }
     }];
 }
 
-#pragma mark - Protocols
+#pragma mark Protocols
 
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
         if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
+            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
         }
     }];
 }
 
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
+- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj conformsToProtocol:protocol];
+    [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
+        if ([obj conformsToProtocol:protocol]) {
+            block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);
+        }
     }];
 }
