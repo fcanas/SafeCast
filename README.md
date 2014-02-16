@@ -4,7 +4,7 @@
 * Be Safe
 * Be Concice
 
-Objective-C is C, and C can be perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
+Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
 Quite simply, you can do things like this:
 
@@ -37,11 +37,11 @@ Or a protocol
                                  }]
 ```
 
-SafeCast has quite a few methods like this, all aimed to make it easy to do the right thing.
+SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, and `NSOrderedSet`.
 
 ## A Whole Library for _that_?
 
-Well, first of all, it's _really_ small. And tested. You may not need it. But it has a lot of things going for it.
+Well, first of all, it's _really_ small. And it's documented and tested. You may not need it. But it has a lot of things going for it.
 
 ### Easy to integrate 
 
@@ -63,9 +63,9 @@ It works. It's usable and stable. But I want to get some feedback on it before p
 
 ### TODO
 
-* Only `NSArray` has been extended with the helpful safety checks. It is my intention to give similar treatment to other collection classes. I'm looking for some feedback on method signatures and coverage before putting all that work in.
-
 * Methods on categories in a reusable libarary should be namespaced. I haven't done that yet.
+
+* Only `NSArray`, `NSOrderedSet`, and `NSSet` have been extended with the helpful safety checks. It is my intention to give similar treatment to `NSDictionary`. I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`.
 
 Please send feedback, pull-requests, and coffee.
 
