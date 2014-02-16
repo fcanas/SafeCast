@@ -34,13 +34,15 @@
 @implementation FFCProtocolTestObject
 @end
 
-@interface FFCCollectionTest : XCTestCase
+@interface FFCArrayTest : XCTestCase
+@end
 
+@interface FFCSetTest : XCTestCase
 @end
 
 #pragma mark - Tests
 
-@implementation FFCCollectionTest
+@implementation FFCArrayTest
 
 - (void)setUp
 {
@@ -101,7 +103,6 @@
     
     XCTAssertEqualObjects([FFCTestObject cast:a[1]].number, @3, @"known objects should have had methods called on it with correct object");
     XCTAssertNil([FFCTestObject cast:a[3]].number, @"objects should not be enumerated after a block indicated enumaration should stop");
-
 }
 
 - (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock
@@ -179,6 +180,120 @@
 {
     NSArray *a = @[[NSObject new], [FFCTestObject new], [FFCProtocolTestObject new], [FFCProtocolTestObject new], @3, @4];
     NSIndexSet *indexSet = [a indexesOfObjectsConformingToProtocol:@protocol(FFCTestProtocol)];
+    
+    XCTAssertEqualObjects(indexSet, [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)], @"should return an index set corresponding to the objects of kind");
+}
+
+@end
+
+#pragma mark - OrderedSet
+
+@implementation FFCSetTest
+
+#pragma mark - Kind of Class
+
+- (void)testEnumerateObjectsOfKindUsingBlock
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsOfKind:[FFCTestObject class]
+                                    usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                        [obj setNumber:@3];
+                                    }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertEqualObjects([FFCTestObject cast:s[1]].number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertEqualObjects([FFCTestObject cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testStoppingBlockEnumeration
+{
+        NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsOfKind:[FFCTestObject class]
+                                    usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                        [obj setNumber:@3];
+                                        *stop = YES;
+                                    }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertEqualObjects([FFCTestObject cast:s[1]].number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil([FFCTestObject cast:s[3]].number, @"objects should not be enumerated after a block indicated enumaration should stop");
+}
+
+- (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsOfKind:[FFCTestObject class]
+                                     AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                       options:kNilOptions
+                                    usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                        [obj setNumber:@3];
+                                    }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testIndexesOfObjectsOfKind
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, @2, [FFCTestObject new], [FFCProtocolTestObject new]]];
+    NSIndexSet *indexSet = [s indexesOfObjectsOfKind:[FFCTestObject class]];
+    
+    XCTAssertEqualObjects(indexSet, [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)], @"should return an index set corresponding to the objects of kind");
+}
+
+#pragma mark - Conforms to Protocol
+
+- (void)testEnumerateObjectsConformingToProtocolUsingBlock
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                  usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                                      [obj setNumber:@3];
+                                                  }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject cast:s[0]].number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject cast:s[1]].number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil([FFCTestObject cast:s[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testStoppingBlockEnumerationConformingToProtocol
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                  usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                                      [obj setNumber:@3];
+                                                      *stop = YES;
+                                                  }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertEqualObjects([FFCTestObject cast:s[1]].number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil([FFCTestObject cast:s[3]].number, @"objects should not be enumerated after a block indicated enumaration should stop");
+    
+}
+
+- (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                   AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                                     options:kNilOptions
+                                                  usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                                      [obj setNumber:@3];
+                                                  }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertNil([FFCTestObject cast:s[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testIndexesOfObjectsConformingToProtocol
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[NSObject new], [FFCTestObject new], [FFCProtocolTestObject new], [FFCProtocolTestObject new], @3, @4]];
+    NSIndexSet *indexSet = [s indexesOfObjectsConformingToProtocol:@protocol(FFCTestProtocol)];
     
     XCTAssertEqualObjects(indexSet, [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)], @"should return an index set corresponding to the objects of kind");
 }
