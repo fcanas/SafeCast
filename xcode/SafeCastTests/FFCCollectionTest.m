@@ -354,14 +354,19 @@
     FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
     NSSet *s = [NSSet setWithArray:@[@1, obj1, @2, obj2]];
     
+    FFCTestObject __block *testedObject;
+    
     XCTAssertNoThrow([s enumerateObjectsOfKind:[FFCTestObject class]
                                     usingBlock:^(FFCTestObject *obj, BOOL *stop) {
                                         [obj setNumber:@3];
+                                        testedObject = obj;
                                         *stop = YES;
                                     }], @"Objects that do not implement `-setNumber` should not raise");
     
-    XCTAssertEqualObjects(obj1.number, @3, @"known objects should have had methods called on it with correct object");
-    XCTAssertNil(obj2.number, @"objects should not be enumerated after a block indicated enumaration should stop");
+    FFCTestObject *untestedObject = testedObject==obj1?obj2:obj1;
+    
+    XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
 }
 
 #pragma mark - Conforms to Protocol
