@@ -25,38 +25,31 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma mark - Kind Of Class
+#undef SAFE_CAST_TEST
+
+#define SAFE_CAST_INDEXED_ENUMERATION [self enumerateObjectsAtIndexes:indexSet \
+options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE \
+{if SAFE_CAST_TEST {block(obj, idx, stop);}}];
+
+#define SAFE_CAST_INDEXES_OF_OBJECTS return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+return SAFE_CAST_TEST;}];
+
+#pragma mark - Kind of Class
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj isKindOfClass:class])
 
 - (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj isKindOfClass:class]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
+{SAFE_CAST_INDEXED_ENUMERATION}
 
 - (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
-{
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj isKindOfClass:class];
-    }];
-}
+{SAFE_CAST_INDEXES_OF_OBJECTS}
 
 #pragma mark - Protocols
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj conformsToProtocol:protocol])
 
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{
-    [self enumerateObjectsAtIndexes:indexSet options:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj conformsToProtocol:protocol]) {
-            block(obj, idx, stop);
-        }
-    }];
-}
+{SAFE_CAST_INDEXED_ENUMERATION}
 
 - (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
-{
-    return [self indexesOfObjectsPassingTest:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        return [obj conformsToProtocol:protocol];
-    }];
-}
+{SAFE_CAST_INDEXES_OF_OBJECTS}
