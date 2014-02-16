@@ -25,30 +25,21 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#pragma mark - Responds to Selector
+#undef SAFE_CAST_WITH_OBJECT
+#undef SAFE_CAST_PERFORM
+#define SAFE_CAST_PERFORM -(void)makeObjectsSafelyPerformSelector:(SEL)aSelector SAFE_CAST_WITH_OBJECT {\
+if (aSelector == NULL) {[[[NSException alloc] initWithName:NSInvalidArgumentException \
+reason:[NSString stringWithFormat: @"Selector passed to %@ must not be nil", NSStringFromSelector(_cmd)]\
+userInfo:nil] raise];}\
+[self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+if ([obj respondsToSelector:aSelector]) {\
+[obj performSelector:aSelector SAFE_CAST_WITH_OBJECT];\
+}}];}
 
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
-{
-    if (aSelector == NULL) {
-        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector: must not be nil" userInfo:nil] raise];
-    }
-    
-    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj respondsToSelector:aSelector]) {
-            [obj performSelector:aSelector];
-        }
-    }];
-}
+#undef SAFE_CAST_WITH_OBJECT
+#define SAFE_CAST_WITH_OBJECT
+SAFE_CAST_PERFORM
 
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject
-{
-    if (aSelector == NULL) {
-        [[[NSException alloc] initWithName:NSInvalidArgumentException reason:@"A selector passed to -makeObjectsSafelyPerformSelector:withObject: must not be nil" userInfo:nil] raise];
-    }
-    
-    [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {
-        if ([obj respondsToSelector:aSelector]) {
-            [obj performSelector:aSelector withObject:anObject];
-        }
-    }];
-}
+#undef SAFE_CAST_WITH_OBJECT
+#define SAFE_CAST_WITH_OBJECT withObject:(id)anObject
+SAFE_CAST_PERFORM
