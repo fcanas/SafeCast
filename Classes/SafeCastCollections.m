@@ -67,6 +67,13 @@
     }];
 }
 
+- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class
+{
+    return [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [obj isKindOfClass:class];
+    }];
+}
+
 #pragma mark Protocols
 
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
@@ -93,6 +100,13 @@
         if ([obj conformsToProtocol:protocol]) {
             block(obj, idx, stop);
         }
+    }];
+}
+
+- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol
+{
+    return [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [obj conformsToProtocol:protocol];
     }];
 }
 

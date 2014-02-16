@@ -78,7 +78,7 @@
 
 - (void)testEnumerateObjectsOfKindUsingBlock
 {
-    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCProtocolTestObject new]];
     
     XCTAssertNoThrow([a enumerateObjectsOfKind:[FFCTestObject class]
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
@@ -91,7 +91,7 @@
 
 - (void)testStoppingBlockEnumeration
 {
-    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSArray *a = @[[NSObject new], [FFCProtocolTestObject new], [NSObject new], [FFCTestObject new]];
     
     XCTAssertNoThrow([a enumerateObjectsOfKind:[FFCTestObject class]
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
@@ -106,7 +106,7 @@
 
 - (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock
 {
-    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCProtocolTestObject new]];
     
     XCTAssertNoThrow([a enumerateObjectsOfKind:[FFCTestObject class]
                                      AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
@@ -117,6 +117,14 @@
     
     XCTAssertNil([FFCTestObject cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testIndexesOfObjectsOfKind
+{
+    NSArray *a = @[[NSObject new], [NSObject new], [FFCTestObject new], [FFCProtocolTestObject new]];
+    NSIndexSet *indexSet = [a indexesOfObjectsOfKind:[FFCTestObject class]];
+    
+    XCTAssertEqualObjects(indexSet, [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)], @"should return an index set corresponding to the objects of kind");
 }
 
 #pragma mark - Conforms to Protocol
@@ -165,6 +173,14 @@
     XCTAssertNil([FFCTestObject cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertNil([FFCTestObject cast:a[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testIndexesOfObjectsConformingToProtocol
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [FFCProtocolTestObject new], [FFCProtocolTestObject new], @3, @4];
+    NSIndexSet *indexSet = [a indexesOfObjectsConformingToProtocol:@protocol(FFCTestProtocol)];
+    
+    XCTAssertEqualObjects(indexSet, [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)], @"should return an index set corresponding to the objects of kind");
 }
 
 @end

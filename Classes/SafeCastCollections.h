@@ -146,6 +146,17 @@
  */
 - (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
+/**
+ Returns the indexes of objects in the array that are of the kind of the given Class.
+ 
+ @param class
+ The Class objects in the array must be a kind of for their index to be returned in the index set
+ 
+ @return
+ The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
+ */
+- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class;
+
 #pragma mark - Protocols
 
 /**
@@ -227,5 +238,15 @@
  */
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
+/**
+ Returns the indexes of objects in the array that conform to the given protocol.
+ 
+ @param protocol
+ The Protocol which objects in the array must conform to for their index to be returned in the index set
+ 
+ @return
+ The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
+ */
+- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
 @end
