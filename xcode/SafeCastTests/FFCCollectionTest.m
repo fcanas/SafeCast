@@ -42,6 +42,9 @@
 @interface FFCSetTest : XCTestCase
 @end
 
+@interface FFCDictionaryTest : XCTestCase
+@end
+
 #pragma mark - NSArray Tests
 
 @implementation FFCArrayTest
@@ -378,7 +381,6 @@
     FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
 
     NSSet *s = [NSSet setWithArray:@[obj1, obj2, obj3, obj4]];
-
     
     XCTAssertNoThrow([s enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
                                                   usingBlock:^(FFCTestObject *obj, BOOL *stop) {
@@ -393,18 +395,150 @@
 
 - (void)testStoppingBlockEnumerationConformingToProtocol
 {
-    NSArray *a = @[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]];
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
     
-    XCTAssertNoThrow([a enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
-                                                  usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+    NSSet *s = [NSSet setWithArray:@[obj1, obj2, obj3, obj4]];
+    
+    FFCTestObject __block *testedObject;
+    
+    XCTAssertNoThrow([s enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                  usingBlock:^(FFCTestObject *obj, BOOL *stop) {
                                                       [obj setNumber:@3];
                                                       *stop = YES;
+                                                      testedObject = obj;
                                                   }], @"Objects that do not implement `-setNumber` should not raise");
     
-    XCTAssertEqualObjects([FFCTestObject cast:a[1]].number, @3, @"known objects should have had methods called on it with correct object");
-    XCTAssertNil([FFCTestObject cast:a[3]].number, @"objects should not be enumerated after a block indicated enumaration should stop");
+    FFCTestObject *untestedObject = testedObject==obj2?obj4:obj2;
     
+    XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
 }
 
+@end
+
+#pragma mark - NSDictionary
+
+@implementation FFCDictionaryTest
+
+- (void)testEnumerateObjectsOfKindUsingBlock
+{
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
+    
+    NSDictionary *d = @{@1:obj1, @2:obj2, @3:obj3, @4:obj4};
+    
+    
+    XCTAssertNoThrow([d enumerateKeysAndObjectsOfKind:[FFCProtocolTestObject class]
+                                                         usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+                                                             [obj setNumber:@3];
+                                                         }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil(obj1.number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects(obj2.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(obj3.number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects(obj4.number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testStoppingBlockEnumerationOfKind
+{
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
+    
+    NSDictionary *d = @{@1:obj1, @2:obj2, @3:obj3, @4:obj4};
+    
+    FFCTestObject __block *testedObject;
+    
+    XCTAssertNoThrow([d enumerateKeysAndObjectsOfKind:[FFCProtocolTestObject class]
+                                                  usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+                                                      [obj setNumber:@3];
+                                                      *stop = YES;
+                                                      testedObject = obj;
+                                                  }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    FFCTestObject *untestedObject = testedObject==obj2?obj4:obj2;
+    
+    XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
+}
+
+
+#pragma mark - Conforms to Protocol
+
+- (void)testEnumerateObjectsConformingToProtocolUsingBlock
+{
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
+    
+    NSDictionary *d = @{@1:obj1, @2:obj2, @3:obj3, @4:obj4};
+    
+    
+    XCTAssertNoThrow([d enumerateKeysAndObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                  usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+                                                      [obj setNumber:@3];
+                                                  }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil(obj1.number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects(obj2.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(obj3.number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects(obj4.number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testStoppingBlockEnumerationConformingToProtocol
+{
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
+    
+    NSDictionary *d = @{@1:obj1, @2:obj2, @3:obj3, @4:obj4};
+    
+    FFCTestObject __block *testedObject;
+    
+    XCTAssertNoThrow([d enumerateKeysAndObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                           usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+                                               [obj setNumber:@3];
+                                               *stop = YES;
+                                               testedObject = obj;
+                                           }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    FFCTestObject *untestedObject = testedObject==obj2?obj4:obj2;
+    
+    XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
+}
+
+- (void)testStoppingBlockEnumerationConformingToProtocolWithOptions
+{
+    FFCTestObject *obj1 = [FFCTestObject new];
+    FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
+    FFCTestObject *obj3 = [FFCTestObject new];
+    FFCProtocolTestObject *obj4 = [FFCProtocolTestObject new];
+    
+    NSDictionary *d = @{@1:obj1, @2:obj2, @3:obj3, @4:obj4};
+    
+    FFCTestObject __block *testedObject;
+    
+    XCTAssertNoThrow([d enumerateKeysAndObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                        withOptions:kNilOptions
+                                                         usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+                                                             [obj setNumber:@3];
+                                                             *stop = YES;
+                                                             testedObject = obj;
+                                                         }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    FFCTestObject *untestedObject = testedObject==obj2?obj4:obj2;
+    
+    XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
+    XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
+}
 
 @end
