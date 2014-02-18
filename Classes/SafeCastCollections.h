@@ -65,7 +65,7 @@
  */
 - (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
 
-#pragma mark - Kind of Class - NSArray
+#pragma mark - Kind of Class NSArray
 
 /**
  Executes a given block using each object in the array matching the indicated Class, starting with the first object and continuing through the array to the last object.
@@ -251,11 +251,9 @@
 
 @end
 
-#pragma mark - NSOrderedSet
+#pragma mark -
 
 @interface NSOrderedSet (SafeCast)
-
-#pragma mark - Kind of Class - NSOrderedSet
 
 /**
  Executes a given block using each object in the ordered set matching the indicated Class, starting with the first object and continuing through the ordered set to the last object.
@@ -576,5 +574,67 @@
  @methodgroup Sending Messages to Elements
  */
 - (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+@end
+
+@interface NSDictionary (SafeCast)
+
+/**
+ Applies a given block object to the entries of the dictionary if the object is of the specified kind.
+ 
+ 
+ @param class
+ The Class objects in the receiver must be a kind of in order to have the block operate on them
+ @param block
+ A block object to operate on entries in the dictionary.
+ 
+ @see – enumerateKeysAndObjectsWithOptions:usingBlock:
+*/
+- (void)enumerateKeysAndObjectsOfKind:(Class)class usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+/**
+Applies a given block object to the entries of the dictionary if the object conforms to the specified Protocol.
+
+ @param protocol
+ The Protocol objects in the receiver must conform to in order to have the block operate on them
+ @param block
+ A block object to operate on entries in the dictionary.
+
+@see – enumerateKeysAndObjectsWithOptions:usingBlock:
+*/
+- (void)enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+/**
+ Applies a given block object to the entries of the dictionary if the are of the specified kind.
+ 
+ @param class
+ The Class objects in the receiver must be a kind of in order to have the block operate on them
+ @param opts
+ Enumeration options.
+ @param block
+ A block object to operate on entries in the dictionary.
+
+ If the block sets *stop to YES, the enumeration stops.
+ 
+ @see – enumerateKeysAndObjects:usingBlock:
+ */
+- (void)enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+/**
+ Applies a given block object to the entries of the dictionary if the conform to the specified Protocol.
+
+ @param protocol
+ The Protocol objects in the receiver must conform to in order to have the block operate on them
+ @param opts
+ Enumeration options.
+ @param block
+ A block object to operate on entries in the dictionary.
+
+ If the block sets *stop to YES, the enumeration stops.
+ 
+ @see – enumerateKeysAndObjects:usingBlock:
+ */
+- (void)enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
 
 @end

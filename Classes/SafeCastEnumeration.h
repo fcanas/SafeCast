@@ -26,29 +26,37 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #undef SAFE_CAST_TEST
+#define SAFE_CAST_OBJECTS Objects
 
-#define SAFE_CAST_ENUMERATE [self enumerateObjectsUsingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+#define SAFE_CAST_KIND_PREFIX(objects) - (void)enumerate ## objects ## OfKind:(Class)class
+#define SAFE_CAST_PROTOCOL_PREFIX(objects) - (void)enumerate ## objects ## ConformingToProtocol:(Protocol *)protocol
+
+#define SAFE_CAST_ENUMERATE(objects) [self enumerate ## objects ## UsingBlock: ^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
 if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
 
-#define SAFE_CAST_ENUMERATE_WITH_OPTIONS [self enumerateObjectsWithOptions:opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+#define SAFE_CAST_ENUMERATE_WITH_OPTIONS(objects) [self enumerate ## objects ## WithOptions: opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
 if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
 
 #pragma mark - Kind of Class
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj isKindOfClass:class])
 
-- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{SAFE_CAST_ENUMERATE}
-
-- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{SAFE_CAST_ENUMERATE_WITH_OPTIONS}
+#ifdef SAFE_CAST_KEYED_ENUMERATION
+SAFE_CAST_KIND_PREFIX(KeysAndObjects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block{SAFE_CAST_ENUMERATE(KeysAndObjects)}
+SAFE_CAST_KIND_PREFIX(KeysAndObjects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)}
+#else
+SAFE_CAST_KIND_PREFIX(Objects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block{SAFE_CAST_ENUMERATE(Objects)}
+SAFE_CAST_KIND_PREFIX(Objects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)}
+#endif
 
 #pragma mark - Protocols
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj conformsToProtocol:protocol])
 
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{SAFE_CAST_ENUMERATE}
-
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
-{SAFE_CAST_ENUMERATE_WITH_OPTIONS}
+#ifdef SAFE_CAST_KEYED_ENUMERATION
+SAFE_CAST_PROTOCOL_PREFIX(KeysAndObjects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE(KeysAndObjects)}
+SAFE_CAST_PROTOCOL_PREFIX(KeysAndObjects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)}
+#else
+SAFE_CAST_PROTOCOL_PREFIX(Objects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE(Objects)}
+SAFE_CAST_PROTOCOL_PREFIX(Objects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)}
+#endif

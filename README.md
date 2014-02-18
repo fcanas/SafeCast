@@ -65,7 +65,7 @@ It works. It's usable and stable. But I want to get some feedback on it before p
 
 * Methods on categories in a reusable libarary should be namespaced. I haven't done that yet.
 
-* Only `NSArray`, `NSOrderedSet`, and `NSSet` have been extended with the helpful safety checks. It is my intention to give similar treatment to `NSDictionary`. I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`.
+* `NSArray`, `NSDictionary`, `NSSet`, and `NSOrderedSet` have been extended with the helpful safety checks for block enumeration. I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`.
 
 Please send feedback, pull-requests, and coffee.
 
