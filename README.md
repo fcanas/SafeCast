@@ -38,7 +38,7 @@ Or a protocol
                                  }]
 ```
 
-SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, and `NSOrderedSet`.
+SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, `NSDictionary`, and `NSOrderedSet`.
 
 ## A Whole Library for _that_?
 
