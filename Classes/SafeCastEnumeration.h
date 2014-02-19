@@ -25,38 +25,32 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#undef SAFE_CAST_TEST
-#define SAFE_CAST_OBJECTS Objects
+#define SAFE_CAST_PREFIX(objects, kind, opts) -(void)enumerate ## objects ## kind opts usingBlock:(void(^)
 
-#define SAFE_CAST_KIND_PREFIX(objects) - (void)enumerate ## objects ## OfKind:(Class)class
-#define SAFE_CAST_PROTOCOL_PREFIX(objects) - (void)enumerate ## objects ## ConformingToProtocol:(Protocol *)protocol
+#define SAFE_CAST_ENUMERATE(objects) block{[self enumerate ## objects ## UsingBlock: ^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];}
 
-#define SAFE_CAST_ENUMERATE(objects) [self enumerate ## objects ## UsingBlock: ^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
-if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
+#define SAFE_CAST_ENUMERATE_WITH_OPTIONS(objects) block{[self enumerate ## objects ## WithOptions: opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
+if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];}
 
-#define SAFE_CAST_ENUMERATE_WITH_OPTIONS(objects) [self enumerate ## objects ## WithOptions: opts usingBlock:^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
-if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];
-
-#pragma mark - Kind of Class
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj isKindOfClass:class])
 
 #ifdef SAFE_CAST_KEYED_ENUMERATION
-SAFE_CAST_KIND_PREFIX(KeysAndObjects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block{SAFE_CAST_ENUMERATE(KeysAndObjects)}
-SAFE_CAST_KIND_PREFIX(KeysAndObjects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)}
+SAFE_CAST_PREFIX(KeysAndObjects,OfKind:(Class)class,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(KeysAndObjects)
+SAFE_CAST_PREFIX(KeysAndObjects,OfKind:(Class)class,withOptions:(NSEnumerationOptions)opts) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE) SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)
 #else
-SAFE_CAST_KIND_PREFIX(Objects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block{SAFE_CAST_ENUMERATE(Objects)}
-SAFE_CAST_KIND_PREFIX(Objects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)}
+SAFE_CAST_PREFIX(Objects,OfKind:(Class)class,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(Objects)
+SAFE_CAST_PREFIX(Objects,OfKind:(Class)class,withOptions:(NSEnumerationOptions)opts)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)
 #endif
 
-#pragma mark - Protocols
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj conformsToProtocol:protocol])
 
 #ifdef SAFE_CAST_KEYED_ENUMERATION
-SAFE_CAST_PROTOCOL_PREFIX(KeysAndObjects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE(KeysAndObjects)}
-SAFE_CAST_PROTOCOL_PREFIX(KeysAndObjects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)}
+SAFE_CAST_PREFIX(KeysAndObjects,ConformingToProtocol:(Protocol*)protocol,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(KeysAndObjects)
+SAFE_CAST_PREFIX(KeysAndObjects,ConformingToProtocol:(Protocol*)protocol,withOptions:(NSEnumerationOptions)opts)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE_WITH_OPTIONS(KeysAndObjects)
 #else
-SAFE_CAST_PROTOCOL_PREFIX(Objects) usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE(Objects)}
-SAFE_CAST_PROTOCOL_PREFIX(Objects) withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block {SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)}
+SAFE_CAST_PREFIX(Objects,ConformingToProtocol:(Protocol*)protocol,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(Objects)
+SAFE_CAST_PREFIX(Objects,ConformingToProtocol:(Protocol*)protocol,withOptions:(NSEnumerationOptions)opts) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)
 #endif
