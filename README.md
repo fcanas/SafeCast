@@ -1,6 +1,9 @@
-# SafeCast [![Build Status](https://travis-ci.org/fcanas/SafeCast.png?branch=master)](https://travis-ci.org/fcanas/SafeCast)
+# SafeCast
+
+[![Build Status](https://travis-ci.org/fcanas/SafeCast.svg?branch=master)](https://travis-ci.org/fcanas/SafeCast)
 
 * Cast objects in Objective-C, not in C
+* Enumerate objects in collections only if they're of a certain kind, or conform to a protocol
 * Be Safe
 * Be Concice
 
@@ -37,11 +40,13 @@ Or a protocol
                                  }]
 ```
 
-SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, and `NSOrderedSet`.
+SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, `NSDictionary`, and `NSOrderedSet`.
+
+I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`.
 
 ## A Whole Library for _that_?
 
-Well, first of all, it's _really_ small. And it's documented and tested. You may not need it. But it has a lot of things going for it.
+Well, first of all, it's _really_ small. The documentation in the headers is _much_ bigger than the code. And it's tested. You may not need it. But it has a lot of things going for it.
 
 ### Easy to integrate 
 
@@ -65,74 +70,6 @@ It works. It's usable and stable. But I want to get some feedback on it before p
 
 * Methods on categories in a reusable libarary should be namespaced. I haven't done that yet.
 
-* `NSArray`, `NSDictionary`, `NSSet`, and `NSOrderedSet` have been extended with the helpful safety checks for block enumeration. I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`.
-
 Please send feedback, pull-requests, and coffee.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fcanas/safecast/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
-<!-- ## Examples
-
-Turn this
-
-```
-- (void)someMethod:(NSSet *)set
-{
-    // Do some stuff...
-    [(NSMutableSet *)set addObject:@"name"];
-    // Also, you should expect this to crash.
-}
-```
-
-into this
-
-```
-- (void)someMethod:(NSSet *)set
-{
-    // Do some stuff...
-    [[NSmutableSet cast:set] addObject:@"name"];
-    // Won't crash! (also, doesn't add @"name" to the set if set isn't mutable)
-}
-```
-
-Or turn this less hair-raising, but still tedious code
-
-```
-- (void)someMethodOnOneSet:(NSSet *)set1 andAnotherSet:(NSSet *)set2
-{
-    // Do some stuff...
-    if ([set1 isKindOfClass:[NSMutableSet class]]) {
-        NSMutableSet *mutableSet = (NSMutableSet *)set1;
-        [mutableSet addObject:@"name"];
-        [mutableSet intersectSet:set2];
-    }
-}
-```
-
-into this
-
-```
-- (void)someMethodOnOneSet:(NSSet *)set1 andAnotherSet:(NSSet *)set2
-{
-    // Do some stuff...
-    NSMutableSet *mutableSet = [NSMutableSet cast:set1];
-    [mutableSet addObject:@"name"];
-    [mutableSet intersectSet:set2];
-}
-```
-
-or this, depending on how much you like blocks
-
-```
-- (void)someMethodOnOneSet:(NSSet *)set1 andAnotherSet:(NSSet *)set2
-{
-    // Do some stuff...
-    [NSMutableSet cast:set1 intoBlock:^(NSMutableSet *mutableSet) {
-        [mutableSet addObject:@"name"];
-        [mutableSet intersectSet:set2];
-    }];
-}
-``` -->
-
-
-
