@@ -1,4 +1,6 @@
-# SafeCast [![Build Status](https://travis-ci.org/fcanas/SafeCast.png?branch=master)](https://travis-ci.org/fcanas/SafeCast)
+# SafeCast
+
+![Build Status](https://travis-ci.org/fcanas/SafeCast.png?branch=master)](https://travis-ci.org/fcanas/SafeCast)
 
 * Cast objects in Objective-C, not in C
 * Enumerate objects in collections only if they're of a certain kind, or conform to a protocol
