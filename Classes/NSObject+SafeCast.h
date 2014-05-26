@@ -48,7 +48,7 @@
  @param obj An object you would like to cast to the receiving class, only if it is safe to do so.
  @return The very same object passed as a parameter in a form recognized by the compiler to be an instance of the receiving class.
  */
-+ (instancetype)cast:(id)obj;
++ (instancetype)safe_cast:(id)obj;
 
 /**
  Executes a block with the passed object as a parameter only if the passed object is of the target class kind.
@@ -57,6 +57,6 @@
  @param block A block that is executed only if the passed object is is an instance of the receiving class or its subclasses. Its parameter, while listed as @code id @/code, is guaranteed to be an instance of the receiving class.
  @return The very same object passed as a parameter in a form recognized by the compiler to be an instance of the receiving class.
  */
-+ (instancetype)cast:(id)obj intoBlock:(void(^)(id))block;
++ (instancetype)safe_cast:(id)obj intoBlock:(void(^)(id))block;
 
 @end

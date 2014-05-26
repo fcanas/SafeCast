@@ -27,7 +27,7 @@
 
 #undef SAFE_CAST_WITH_OBJECT
 #undef SAFE_CAST_PERFORM
-#define SAFE_CAST_PERFORM -(void)makeObjectsSafelyPerformSelector:(SEL)aSelector SAFE_CAST_WITH_OBJECT {\
+#define SAFE_CAST_PERFORM -(void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector SAFE_CAST_WITH_OBJECT {\
 if (aSelector == NULL) {[[[NSException alloc] initWithName:NSInvalidArgumentException \
 reason:[NSString stringWithFormat: @"Selector passed to %@ must not be nil", NSStringFromSelector(_cmd)]\
 userInfo:nil] raise];}\

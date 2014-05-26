@@ -38,16 +38,16 @@ return SAFE_CAST_TEST;}];
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj isKindOfClass:class])
 
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {SAFE_CAST_INDEXED_ENUMERATION}
 
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class {SAFE_CAST_INDEXES_OF_OBJECTS}
+- (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class {SAFE_CAST_INDEXES_OF_OBJECTS}
 
 #pragma mark - Protocols
 #undef SAFE_CAST_TEST
 #define SAFE_CAST_TEST ([obj conformsToProtocol:protocol])
 
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
 {SAFE_CAST_INDEXED_ENUMERATION}
 
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol {SAFE_CAST_INDEXES_OF_OBJECTS}
+- (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol {SAFE_CAST_INDEXES_OF_OBJECTS}

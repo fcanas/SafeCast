@@ -53,6 +53,8 @@
 		E71C899018ADBA7A00CF3E2E /* SafeCastTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SafeCastTests-Info.plist"; sourceTree = "<group>"; };
 		E71C899218ADBA7A00CF3E2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E71C899418ADBA7A00CF3E2E /* SafeCastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeCastTests.m; sourceTree = "<group>"; };
+		E7735ADF198D71EF00135C7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E7735AE0198D71F900135C7B /* SafeCast.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = SafeCast.podspec; path = ../SafeCast.podspec; sourceTree = "<group>"; };
 		E7B409F618B004780017967E /* FFCCollectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFCCollectionTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,8 @@
 		E71C896318ADBA7A00CF3E2E = {
 			isa = PBXGroup;
 			children = (
+				E7735ADF198D71EF00135C7B /* README.md */,
+				E7735AE0198D71F900135C7B /* SafeCast.podspec */,
 				E71C897518ADBA7A00CF3E2E /* SafeCast */,
 				E71C898E18ADBA7A00CF3E2E /* SafeCastTests */,
 				E71C896E18ADBA7A00CF3E2E /* Frameworks */,
@@ -204,7 +208,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FFC;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Fabián Cañas";
 				TargetAttributes = {
 					E71C898618ADBA7A00CF3E2E = {
@@ -366,7 +370,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -405,7 +408,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -466,7 +468,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -490,7 +491,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

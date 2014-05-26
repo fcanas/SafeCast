@@ -46,7 +46,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
+- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector;
 
 /**
  Sends the aSelector message to each object in the array, starting with the first object and continuing through the array to the last object if and only if the object responds to the given selector.
@@ -63,7 +63,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
+- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
 
 #pragma mark - Kind of Class NSArray
 
@@ -92,7 +92,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the array.
@@ -117,7 +117,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the array at the specified indexes.
@@ -144,7 +144,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Returns the indexes of objects in the array that are of the kind of the given Class.
@@ -155,7 +155,7 @@
  @return
  The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
  */
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class;
+- (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
 
 #pragma mark - Conforms to Protocol - Array
 
@@ -184,7 +184,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the array.
@@ -209,7 +209,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the array at the specified indexes.
@@ -236,7 +236,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Returns the indexes of objects in the array that conform to the given protocol.
@@ -247,7 +247,7 @@
  @return
  The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
  */
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
+- (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
 @end
 
@@ -280,7 +280,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the ordered set.
@@ -305,7 +305,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the ordered set at the specified indexes.
@@ -332,7 +332,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Returns the indexes of objects in the ordered set that are of the kind of the given Class.
@@ -343,7 +343,7 @@
  @return
  The indexes whose corresponding values in the ordered set are the kind of object class passed. If no objects in the ordered set pass the test, returns an empty index set.
  */
-- (NSIndexSet *)indexesOfObjectsOfKind:(Class)class;
+- (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
 
 #pragma mark - Protocols NSOrderedSet
 
@@ -372,7 +372,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the ordered set.
@@ -397,7 +397,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the ordered set at the specified indexes.
@@ -424,7 +424,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Returns the indexes of objects in the ordered set that conform to the given protocol.
@@ -435,7 +435,7 @@
  @return
  The indexes whose corresponding values in the ordered set are the kind of object class passed. If no objects in the ordered set pass the test, returns an empty index set.
  */
-- (NSIndexSet *)indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
+- (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
 @end
 
@@ -458,7 +458,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector;
+- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector;
 
 /**
  Sends the aSelector message to each object in the set, starting with the first object and continuing through the set to the last object if and only if the object responds to the given selector.
@@ -475,7 +475,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
+- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
 
 /**
  Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.
@@ -500,7 +500,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the set.
@@ -523,7 +523,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
 
 #pragma mark - Protocols NSSet
 
@@ -550,7 +550,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the set.
@@ -573,7 +573,7 @@
  
  @methodgroup Sending Messages to Elements
  */
-- (void)enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
 
 @end
 
@@ -590,7 +590,7 @@
  
  @see – enumerateKeysAndObjectsWithOptions:usingBlock:
 */
-- (void)enumerateKeysAndObjectsOfKind:(Class)class usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 /**
 Applies a given block object to the entries of the dictionary if the object conforms to the specified Protocol.
@@ -602,7 +602,7 @@ Applies a given block object to the entries of the dictionary if the object conf
 
 @see – enumerateKeysAndObjectsWithOptions:usingBlock:
 */
-- (void)enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 /**
  Applies a given block object to the entries of the dictionary if the are of the specified kind.
@@ -618,7 +618,7 @@ Applies a given block object to the entries of the dictionary if the object conf
  
  @see – enumerateKeysAndObjects:usingBlock:
  */
-- (void)enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 /**
  Applies a given block object to the entries of the dictionary if the conform to the specified Protocol.
@@ -634,7 +634,7 @@ Applies a given block object to the entries of the dictionary if the object conf
  
  @see – enumerateKeysAndObjects:usingBlock:
  */
-- (void)enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 
 @end

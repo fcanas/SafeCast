@@ -25,7 +25,7 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#define SAFE_CAST_PREFIX(objects, kind, opts) -(void)enumerate ## objects ## kind opts usingBlock:(void(^)
+#define SAFE_CAST_PREFIX(objects, kind, opts) -(void)safe_enumerate ## objects ## kind opts usingBlock:(void(^)
 
 #define SAFE_CAST_ENUMERATE(objects) block{[self enumerate ## objects ## UsingBlock: ^SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE {\
 if SAFE_CAST_TEST {block(SAFE_CAST_ENUMERATE_BLOCK_PARAMETERS);}}];}

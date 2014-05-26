@@ -29,7 +29,7 @@
 
 @implementation NSObject (SafeCast)
 
-+ (instancetype)cast:(id)obj
++ (instancetype)safe_cast:(id)obj
 {
     if ([obj isKindOfClass:self]) {
         return obj;
@@ -37,7 +37,7 @@
     return nil;
 }
 
-+ (instancetype)cast:(id)obj intoBlock:(void(^)(id))block
++ (instancetype)safe_cast:(id)obj intoBlock:(void(^)(id))block
 {
     if ([obj isKindOfClass:self]) {
         if (block) {
