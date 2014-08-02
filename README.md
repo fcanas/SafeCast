@@ -1,6 +1,6 @@
 # SafeCast
 
-[![Build Status](https://travis-ci.org/fcanas/SafeCast.svg?branch=master)](https://travis-ci.org/fcanas/SafeCast)
+[![CI Status](http://img.shields.io/travis/fcanas/SafeCast.svg?style=flat)](https://travis-ci.org/fcanas/SafeCast)
 
 * Cast objects in Objective-C, not in C
 * Enumerate objects in collections only if they're of a certain kind, or conform to a protocol
@@ -71,5 +71,3 @@ It works. It's usable and stable. But I want to get some feedback on it before p
 * Methods on categories in a reusable libarary should be namespaced. I haven't done that yet.
 
 Please send feedback, pull-requests, and coffee.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/fcanas/safecast/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
