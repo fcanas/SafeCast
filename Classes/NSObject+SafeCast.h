@@ -27,17 +27,24 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Conditional casting into any class.
+
+ This category facilitates conditional casting and code execution of objects.
+ */
 @interface NSObject (SafeCast)
 
 /**
  Returns its parameter if it is of the callee's kind, i.e. a member or a member of a subclass.
  
- The following segments of code are equivalent, and 
+ The following segments of code are equivalent, and are possible with any class that inherits from NSObject (almost all classes).
  
  @code
  NSMutableArray *ma;
  if ([a isKindOfClass:[NSMutableArray class]]) {
      ma = a;
+ } else {
+     ma = nil;
  }
  @endcode
  

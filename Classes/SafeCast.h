@@ -25,8 +25,8 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef Pods_SafeCast_h
-#define Pods_SafeCast_h
+#ifndef _SafeCast_
+#define _SafeCast_
 
 #import "NSObject+SafeCast.h"
 #import "SafeCastCollections.h"

@@ -1,5 +1,5 @@
 PODS:
-  - SafeCast (0.0.1)
+  - SafeCast (1.0.0)
 
 DEPENDENCIES:
   - SafeCast (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SafeCast: c594a9b1ad7a63099e5a8f4508a720e855f35437
+  SafeCast: b1cf463bfaea97551f7a77fd9186eeaaf6ace0db
 
 COCOAPODS: 0.33.1
