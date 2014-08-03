@@ -65,7 +65,7 @@
  
  @param anObject The object to send as the argument to each invocation of the aSelector method.
  
- @see - makeObjectsPerformSelectorSafely:
+ @see - makeObjectsSafelyPerformSelector:
  @see – makeObjectsPerformSelector:
  @see – makeObjectsPerformSelector:withObject:
  
@@ -97,8 +97,6 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  
  @see – enumerateObjectsWithOptions:usingBlock:
- @see – makeObjectsPerformSelector:
- @see – makeObjectsPerformSelector:withObject:
  
  @methodgroup Sending Messages to Elements
  */
@@ -151,8 +149,6 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  
  @see – enumerateObjectsWithOptions:usingBlock:
- @see – makeObjectsPerformSelector:
- @see – makeObjectsPerformSelector:withObject:
  
  @methodgroup Sending Messages to Elements
  */
@@ -176,6 +172,8 @@
  By default, the enumeration starts with the first object and continues serially through the set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
  
  This method executes synchronously.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
  
  @methodgroup Sending Messages to Elements
  */

@@ -101,8 +101,6 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  
  @see – enumerateObjectsWithOptions:usingBlock:
- @see – makeObjectsPerformSelector:
- @see – makeObjectsPerformSelector:withObject:
  
  @methodgroup Sending Messages to Elements
  */
@@ -197,8 +195,6 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  
  @see – enumerateObjectsWithOptions:usingBlock:
- @see – makeObjectsPerformSelector:
- @see – makeObjectsPerformSelector:withObject:
  
  @methodgroup Sending Messages to Elements
  */
