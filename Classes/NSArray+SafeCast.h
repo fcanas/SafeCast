@@ -35,7 +35,11 @@
  */
 @interface NSArray (SafeCast)
 
-#pragma mark - Responds to Selector
+#pragma mark - Perform Selector
+
+/**
+ @name Performing a Selector
+ */
 
 /**
  Sends to each object in the array the message identified by a given selector, starting with the first object and continuing through the array to the last object if and only if the object responds to the given selector.
@@ -71,7 +75,11 @@
  */
 - (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
 
-#pragma mark - Kind of Class NSArray
+#pragma mark - Of Kind
+
+/**
+ @name Operations on objects that are of a kind of class.
+ */
 
 /**
  Executes a given block using each object in the array matching the indicated Class, starting with the first object and continuing through the array to the last object.
@@ -163,7 +171,11 @@
  */
 - (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
 
-#pragma mark - Conforms to Protocol - Array
+#pragma mark - Conforms to Protocol
+
+/**
+ @name Operations on objects that conform to a protocol.
+ */
 
 /**
  Executes a given block using each object in the array matching the indicated Class, starting with the first object and continuing through the array to the last object.

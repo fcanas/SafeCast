@@ -33,7 +33,11 @@
  */
 @interface NSSet (SafeCast)
 
-#pragma mark - Responds to Selector
+#pragma mark - Perform selector
+
+/**
+ @name Performing a selector
+ */
 
 /**
  Sends to each object in the set the message identified by a given selector, starting with the first object and continuing through the set to the last object if and only if the object responds to the given selector.
@@ -68,6 +72,12 @@
  @methodgroup Sending Messages to Elements
  */
 - (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
+
+#pragma mark - Of Kind
+
+/**
+ @name Operations on objects that are of a kind of class.
+ */
 
 /**
  Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.
@@ -117,7 +127,11 @@
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
 
-#pragma mark - Protocols NSSet
+#pragma mark - Protocols
+
+/**
+ @name Operations on objects that conform to a protocol.
+ */
 
 /**
  Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.

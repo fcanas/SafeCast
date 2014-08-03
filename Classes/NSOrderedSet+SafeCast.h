@@ -33,7 +33,11 @@
  */
 @interface NSOrderedSet (SafeCast)
 
-#pragma mark - Kind NSOrderedSet
+#pragma mark - Kind of Class
+
+/**
+ @name Operations on objects that are a kind of class.
+ */
 
 /**
  Executes a given block using each object in the ordered set matching the indicated Class, starting with the first object and continuing through the ordered set to the last object.
@@ -125,7 +129,11 @@
  */
 - (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
 
-#pragma mark - Protocols NSOrderedSet
+#pragma mark - Conforms to Protocol
+
+/**
+ @name Operations on objects that conform to a protocol
+ */
 
 /**
  Executes a given block using each object in the ordered set matching the indicated Class, starting with the first object and continuing through the ordered set to the last object.
