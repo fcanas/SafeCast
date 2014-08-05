@@ -53,10 +53,10 @@ Well, first of all, it's _really_ small. The documentation in the headers is _mu
 
 ### Easy to integrate 
 
-When it's done, I'll release SafeCast as a [CocoaPod](http://guides.cocoapods.org/using/getting-started.html). Until the podspec is published, you'll have to include a reference to this repository directly in your Podfile:
+SafeCast is available as a [CocoaPod](http://guides.cocoapods.org/using/getting-started.html).
 
 ```
-pod 'SafeCase', git: 'https://github.com/fcanas/SafeCast.git'
+pod 'SafeCase'
 ```
 
 ### Be concice and direct with your intent
