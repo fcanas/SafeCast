@@ -27,7 +27,7 @@
 
 /**
  Type-safe operations on elements of an NSOrderedSet.
- 
+
  This category enables some type and behavior dependent operations on elements of an NSOrderedSet.
  It is possible to perform actions such as enumeration, finding indices, and performing selectors on member objects based on criteria such as they kind, their adoption of a protocol, or whether they respond to a selector.
  */
@@ -41,11 +41,11 @@
 
 /**
  Executes a given block using each object in the ordered set matching the indicated Class, starting with the first object and continuing through the ordered set to the last object.
- 
- If the Block parameter is nil this method will raise an exception.
- 
+
+ If the Block parameter is @p nil this method will raise an exception.
+
  This method executes synchronously.
- 
+
  @param class
  The Class objects in the ordered set must be a kind of for the block to be executed on
  @param block
@@ -57,16 +57,16 @@
  The index of the element in the ordered set.
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
- 
+
  @see – enumerateObjectsWithOptions:usingBlock:
- 
+
  @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
- Executes a given block using each object in the ordered set.
- 
+ Executes a given block using each object in the ordered set that inherit from the given class.
+
  @param class
  The Class objects in the ordered set must be a kind of for the block to be executed on
  @param opts
@@ -80,18 +80,18 @@
  The index of the element in the ordered set.
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
- 
+
  By default, the enumeration starts with the first object and continues serially through the ordered set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
- 
+
  This method executes synchronously.
- 
+
  @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
- Executes a given block using the objects in the ordered set at the specified indexes.
- 
+ Executes a given block using the objects in the ordered set at the specified indexes that inherit from the given class.
+
  @param class
  The Class objects in the ordered set must be a kind of for the block to be executed on
  @param indexSet
