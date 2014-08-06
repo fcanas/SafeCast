@@ -51,3 +51,11 @@ return SAFE_CAST_TEST;}];
 {SAFE_CAST_INDEXED_ENUMERATION}
 
 - (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol {SAFE_CAST_INDEXES_OF_OBJECTS}
+
+#pragma mark - Selectors
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj respondsToSelector:selector])
+
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)block
+{SAFE_CAST_INDEXED_ENUMERATION}
+

@@ -102,5 +102,34 @@
  */
 - (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
+/**
+ @name Operations on objects that respond to a selector
+ */
+
+/**
+ Applies a given block object to the entries of the dictionary if the entry
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+ @param block
+ A block object to operate on entries in the dictionary.
+ 
+ @see – enumerateKeysAndObjectsWithOptions:usingBlock:
+ */
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+/**
+ Applies a given block object to the entries of the dictionary if the entry can respond to the given selector.
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+ @param opts
+ Enumeration options.
+ @param block
+ A block object to operate on entries in the dictionary.
+ 
+ If the block sets *stop to YES, the enumeration stops.
+ 
+ @see – enumerateKeysAndObjects:usingBlock:
+ */
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 @end

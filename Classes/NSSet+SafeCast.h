@@ -81,11 +81,11 @@
 
 /**
  Executes a given block using each object in the set matching the indicated Class, starting with the first object and continuing through the set to the last object.
- 
+
  If the Block parameter is nil this method will raise an exception.
- 
+
  This method executes synchronously.
- 
+
  @param class
  The Class objects in the set must be a kind of for the block to be executed on
  @param block
@@ -178,5 +178,56 @@
  @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+/**
+ @name Operations on objects that respond to a selector.
+ */
+
+/**
+ Executes a given block using each object in the set which can respond to the given selector, starting with the first object and continuing through the set to the last object.
+ 
+ If the Block parameter is nil this method will raise an exception.
+ 
+ This method executes synchronously.
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id obj, BOOL *stop))block;
+
+/**
+ Executes a given block using each object in the set which can respond to the given selector.
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+ @param opts
+ A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ @param block
+ The block to apply to elements in the set.
+ The block takes three arguments:
+ obj
+ The element in the set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ By default, the enumeration starts with the first object and continues serially through the set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
+ 
+ This method executes synchronously.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+
 
 @end

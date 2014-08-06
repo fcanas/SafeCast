@@ -81,6 +81,45 @@
     XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
 }
 
+- (void)testRespondsToSelector
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    
+    
+    XCTAssertNoThrow([a safe_enumerateObjectsRespondingToSelector:@selector(method) usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorWithOptions
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    
+    
+    XCTAssertNoThrow([a safe_enumerateObjectsRespondingToSelector:@selector(method) withOptions:kNilOptions usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorAtIndicesWithOptions
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSIndexSet *i = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)];
+    
+    XCTAssertNoThrow([a safe_enumerateObjectsRespondingToSelector:@selector(method) atIndexes:i options:kNilOptions usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertFalse([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
 #pragma mark - Kind of Class
 
 - (void)testEnumerateObjectsOfKindUsingBlock
@@ -194,6 +233,48 @@
 #pragma mark - NSOrderedSet Tests
 
 @implementation FFCOrderedSetTest
+
+#pragma mark - Responds to Selector
+
+- (void)testRespondsToSelector
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSOrderedSet *s= [NSOrderedSet orderedSetWithArray:a];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsRespondingToSelector:@selector(method) usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorWithOptions
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSOrderedSet *s= [NSOrderedSet orderedSetWithArray:a];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsRespondingToSelector:@selector(method) withOptions:kNilOptions usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorAtIndicesWithOptions
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSIndexSet *i = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 2)];
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:a];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsRespondingToSelector:@selector(method) atIndexes:i options:kNilOptions usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertFalse([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
 
 #pragma mark - Kind of Class
 
@@ -331,6 +412,32 @@
     XCTAssertNoThrow([s safe_makeObjectsSafelyPerformSelector:@selector(setNumber:) withObject:@3], @"Objects that do not implement `-setNumber` should not raise");
     XCTAssertEqualObjects(obj1.number, @3, @"known objects should have had methods called on it with correct object");
     XCTAssertEqualObjects(obj2.number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testRespondsToSelector
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSSet *s= [NSSet setWithArray:a];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsRespondingToSelector:@selector(method) usingBlock:^(id obj, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorWithOptions
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCTestObject new]];
+    NSSet *s= [NSSet setWithArray:a];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsRespondingToSelector:@selector(method) withOptions:kNilOptions usingBlock:^(id obj, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:a[1]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:a[3]].methodCalled, @"known objects should have had methods called on it");
 }
 
 #pragma mark - Kind of Class
@@ -539,6 +646,32 @@
     
     XCTAssertEqualObjects(testedObject.number, @3, @"known objects should have had methods called on it with correct object");
     XCTAssertNil(untestedObject.number, @"objects should not be enumerated after a block indicated enumaration should stop");
+}
+
+#pragma mark - Responds to Selector
+
+- (void)testRespondsToSelector
+{
+    NSDictionary *d = @{@1:[NSObject new], @2:[FFCTestObject new], @3:[NSObject new], @4:[FFCTestObject new]};
+    
+    XCTAssertNoThrow([d safe_enumerateKeysAndObjectsRespondingToSelector:@selector(method) usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:d[@2]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:d[@4]].methodCalled, @"known objects should have had methods called on it");
+}
+
+- (void)testRespondsToSelectorWithOptions
+{
+    NSDictionary *d = @{@1:[NSObject new], @2:[FFCTestObject new], @3:[NSObject new], @4:[FFCTestObject new]};
+    
+    XCTAssertNoThrow([d safe_enumerateKeysAndObjectsRespondingToSelector:@selector(method) withOptions:kNilOptions usingBlock:^(id key, FFCTestObject *obj, BOOL *stop) {
+        [obj method];
+    }], @"Should be able to enumerate objects responding to selector without raising.");
+    
+    XCTAssertTrue([FFCTestObject safe_cast:d[@2]].methodCalled, @"known objects should have had methods called on it");
+    XCTAssertTrue([FFCTestObject safe_cast:d[@4]].methodCalled, @"known objects should have had methods called on it");
 }
 
 @end

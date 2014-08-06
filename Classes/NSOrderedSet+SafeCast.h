@@ -221,4 +221,84 @@
  */
 - (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
+#pragma mark - Responds to Selector
+
+/**
+ @name Operations on objects that respond to a selector.
+ */
+
+/**
+ Executes a given block using each object in the ordered set which can respond to the given selector, starting with the first object and continuing through the ordered set to the last object.
+
+ If the Block parameter is nil this method will raise an exception.
+
+ This method executes synchronously.
+
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on
+ @param block
+ The block to apply to elements in the ordered set.
+ The block takes three arguments:
+ obj
+ The element in the ordered set.
+ idx
+ The index of the element in the ordered set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ @see – enumerateObjectsWithOptions:usingBlock:
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
+/**
+ Executes a given block using each object in the ordered set which can respond to the given selector.
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on
+ @param opts
+ A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ @param block
+ The block to apply to elements in the ordered set.
+ The block takes three arguments:
+ obj
+ The element in the ordered set.
+ idx
+ The index of the element in the ordered set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ By default, the enumeration starts with the first object and continues serially through the ordered set to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
+ 
+ This method executes synchronously.
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
+/**
+ Executes a given block using the objects in the ordered set at the specified indexes which can respond to the given selector.
+ 
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on
+ @param indexSet
+ The indexes of the objects over which to enumerate.
+ @param opts
+ A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ @block block
+ The block to apply to elements in the ordered set.
+ The block takes three arguments:
+ obj
+ The element in the ordered set.
+ idx
+ The index of the element in the ordered set.
+ stop
+ A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
+ 
+ By default, the enumeration starts with the first object and continues serially through the ordered set to the last element specified by indexSet. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
+ 
+ This method executes synchronously.
+ 
+ @methodgroup Sending Messages to Elements
+ */
+- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector atIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
 @end
