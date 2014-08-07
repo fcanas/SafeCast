@@ -146,7 +146,12 @@
 
  @methodgroup Sending Messages to Elements
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(Class)class atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
+/**
+ @see safe_enumerateObjectsOfKind:atIndexes:options:usingBlock:
+ */
+- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block DEPRECATED_ATTRIBUTE;
 
 /**
  Returns the indexes of objects in the array that are of the kind of the given Class.
@@ -240,7 +245,12 @@
 
  @methodgroup Sending Messages to Elements
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
+/**
+ @see safe_enumerateObjectsConformingToProtocol:atIndexes:options:usingBlock:
+ */
+- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block DEPRECATED_ATTRIBUTE;
 
 /**
  Returns the indexes of objects in the array that conform to the given protocol.
@@ -329,6 +339,5 @@
  @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector atIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
-
 
 @end

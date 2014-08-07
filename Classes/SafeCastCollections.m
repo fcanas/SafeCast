@@ -38,13 +38,14 @@
 #include "SafeCastPerformSelector.h"
 #include "SafeCastEnumeration.h"
 #include "SafeCastIndexedEnumeration.h"
-
+#include "SafeCastIndexedEnumerationDeprecatedSupport.h"
 @end
 
 @implementation NSOrderedSet (SafeCast)
 
 #include "SafeCastEnumeration.h"
 #include "SafeCastIndexedEnumeration.h"
+#include "SafeCastIndexedEnumerationDeprecatedSupport.h"
 
 @end
 
@@ -58,7 +59,6 @@
 
 #include "SafeCastPerformSelector.h"
 #include "SafeCastEnumeration.h"
-
 @end
 
 @implementation NSDictionary (SafeCast)

@@ -154,11 +154,26 @@
     NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCProtocolTestObject new]];
     
     XCTAssertNoThrow([a safe_enumerateObjectsOfKind:[FFCTestObject class]
-                                     AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                     atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                        options:kNilOptions
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                         [obj setNumber:@3];
                                     }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock_legacy
+{
+    NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCProtocolTestObject new]];
+    
+    XCTAssertNoThrow([a safe_enumerateObjectsOfKind:[FFCTestObject class]
+                                          AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                            options:kNilOptions
+                                         usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                             [obj setNumber:@3];
+                                         }], @"Objects that do not implement `-setNumber` should not raise");
     
     XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
@@ -209,11 +224,27 @@
     NSArray *a = @[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]];
     
     XCTAssertNoThrow([a safe_enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
-                                     AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                     atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                        options:kNilOptions
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                         [obj setNumber:@3];
                                     }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertNil([FFCTestObject safe_cast:a[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock_legacy
+{
+    NSArray *a = @[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]];
+    
+    XCTAssertNoThrow([a safe_enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                        AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                                          options:kNilOptions
+                                                       usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                                           [obj setNumber:@3];
+                                                       }], @"Objects that do not implement `-setNumber` should not raise");
     
     XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertNil([FFCTestObject safe_cast:a[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
@@ -310,6 +341,21 @@
     NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
     
     XCTAssertNoThrow([s safe_enumerateObjectsOfKind:[FFCTestObject class]
+                                          atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                            options:kNilOptions
+                                         usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                             [obj setNumber:@3];
+                                         }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject safe_cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject safe_cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock_legacy
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsOfKind:[FFCTestObject class]
                                      AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                        options:kNilOptions
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
@@ -361,6 +407,22 @@
 }
 
 - (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock
+{
+    NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
+    
+    XCTAssertNoThrow([s safe_enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
+                                                        atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
+                                                          options:kNilOptions
+                                                       usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
+                                                           [obj setNumber:@3];
+                                                       }], @"Objects that do not implement `-setNumber` should not raise");
+    
+    XCTAssertNil([FFCTestObject safe_cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
+    XCTAssertNil([FFCTestObject safe_cast:s[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
+    XCTAssertEqualObjects([FFCTestObject safe_cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
+}
+
+- (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock_legacy
 {
     NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
     
