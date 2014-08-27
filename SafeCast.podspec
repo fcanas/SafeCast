@@ -1,8 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "SafeCast"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "Safe Casting in Objective-C"
-
   s.description  = <<-DESC
                   * Cast in Objective-C, not in C
                   * Be Safe
@@ -32,7 +31,7 @@ Pod::Spec.new do |s|
                                           }];
                   ```
                   
-                  And lots of other similar methods on standard collections.
+                  And lots of other similar methods on collections.
                   DESC
   s.homepage     = "https://github.com/fcanas/SafeCast"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
@@ -43,7 +42,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '4.0'
   s.osx.deployment_target = '10.6'
   
-  s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "1.1.0" }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   s.public_header_files = ['Classes/NSArray+SafeCast.h', 'Classes/NSDictionary+SafeCast.h', 'Classes/NSObject+SafeCast.h', 'Classes/NSOrderedSet+SafeCast.h', 'Classes/NSSet+SafeCast.h', 'Classes/SafeCast.h', 'Classes/SafeCastCollections.h']
 end
