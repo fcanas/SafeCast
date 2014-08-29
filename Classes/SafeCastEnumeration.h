@@ -54,3 +54,15 @@ SAFE_CAST_PREFIX(KeysAndObjects,ConformingToProtocol:(Protocol*)protocol,withOpt
 SAFE_CAST_PREFIX(Objects,ConformingToProtocol:(Protocol*)protocol,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(Objects)
 SAFE_CAST_PREFIX(Objects,ConformingToProtocol:(Protocol*)protocol,withOptions:(NSEnumerationOptions)opts) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)
 #endif
+
+#undef SAFE_CAST_TEST
+#define SAFE_CAST_TEST ([obj respondsToSelector:selector])
+
+#ifdef SAFE_CAST_KEYED_ENUMERATION
+// Responding to selector
+SAFE_CAST_PREFIX(KeysAndObjects, RespondingToSelector:(SEL)selector,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(KeysAndObjects)
+SAFE_CAST_PREFIX(KeysAndObjects, RespondingToSelector:(SEL)selector,withOptions:(NSEnumerationOptions)opts) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(KeysAndObjects)
+#else
+SAFE_CAST_PREFIX(Objects, RespondingToSelector:(SEL)selector,) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE(Objects)
+SAFE_CAST_PREFIX(Objects,RespondingToSelector:(SEL)selector,withOptions:(NSEnumerationOptions)opts) SAFE_CAST_ENUMERATE_BLOCK_SIGNATURE)SAFE_CAST_ENUMERATE_WITH_OPTIONS(Objects)
+#endif

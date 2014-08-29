@@ -27,68 +27,92 @@
 
 /**
  Type-safe operations on elements of an NSDictionary.
- 
+
  This category enables some type and behavior dependent operations on elements of an NSDictionary.
  It is possible to perform actions such as enumeration, and performing selectors on member objects based on criteria such as they kind, their adoption of a protocol, or whether they respond to a selector.
  */
 @interface NSDictionary (SafeCast)
 
+#pragma mark - Kind of Class
+
+/**
+ @name Operations on objects that are a kind of class.
+ */
+
 /**
  Applies a given block object to the entries of the dictionary if the object is of the specified kind.
- 
- 
- @param class
- The Class objects in the receiver must be a kind of in order to have the block operate on them
- @param block
- A block object to operate on entries in the dictionary.
- 
- @see – enumerateKeysAndObjectsWithOptions:usingBlock:
+
+ @param class The Class objects in the receiver must be a kind of in order to have the block operate on them
+
+ @param block A block object to operate on entries in the dictionary.
  */
 - (void)safe_enumerateKeysAndObjectsOfKind:(Class)class usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 /**
+ Applies a given block object to the entries of the dictionary if the are of the specified kind.
+
+ @param class The Class objects in the receiver must be a kind of in order to have the block operate on them
+
+ @param opts Enumeration options.
+
+ @param block A block object to operate on entries in the dictionary.
+
+ If the block sets *stop to YES, the enumeration stops.
+ */
+- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+#pragma mark - Conforms to Protocol
+
+/**
+ @name Operations on objects that conform to a protocol.
+ */
+
+/**
  Applies a given block object to the entries of the dictionary if the object conforms to the specified Protocol.
- 
- @param protocol
- The Protocol objects in the receiver must conform to in order to have the block operate on them
- @param block
- A block object to operate on entries in the dictionary.
- 
- @see – enumerateKeysAndObjectsWithOptions:usingBlock:
+
+ @param protocol The Protocol objects in the receiver must conform to in order to have the block operate on them
+
+ @param block A block object to operate on entries in the dictionary.
  */
 - (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 /**
- Applies a given block object to the entries of the dictionary if the are of the specified kind.
- 
- @param class
- The Class objects in the receiver must be a kind of in order to have the block operate on them
- @param opts
- Enumeration options.
- @param block
- A block object to operate on entries in the dictionary.
- 
- If the block sets *stop to YES, the enumeration stops.
- 
- @see – enumerateKeysAndObjects:usingBlock:
- */
-- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
-
-/**
  Applies a given block object to the entries of the dictionary if the conform to the specified Protocol.
- 
- @param protocol
- The Protocol objects in the receiver must conform to in order to have the block operate on them
- @param opts
- Enumeration options.
- @param block
- A block object to operate on entries in the dictionary.
- 
+
+ @param protocol The Protocol objects in the receiver must conform to in order to have the block operate on them
+
+ @param opts Enumeration options.
+
+ @param block A block object to operate on entries in the dictionary.
+
  If the block sets *stop to YES, the enumeration stops.
- 
- @see – enumerateKeysAndObjects:usingBlock:
  */
 - (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
+/**
+ @name Operations on objects that respond to a selector
+ */
+
+/**
+ Applies a given block object to the entries of the dictionary if the entry
+
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+
+ @param block A block object to operate on entries in the dictionary.
+ */
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+
+/**
+ Applies a given block object to the entries of the dictionary if the entry can respond to the given selector.
+
+ @param selector The selector objects in the ordered set must respond to for the block to be executed on them
+
+ @param opts Enumeration options.
+
+ @param block A block object to operate on entries in the dictionary.
+
+ If the block sets *stop to YES, the enumeration stops.
+ */
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
 
 @end
