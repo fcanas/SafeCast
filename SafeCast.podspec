@@ -42,7 +42,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '4.0'
   s.osx.deployment_target = '10.6'
   
-  s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "1.1.0" }
+  s.source       = { :git => "https://github.com/fcanas/SafeCast.git", :tag => "v1.1.0" }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   s.public_header_files = ['Classes/NSArray+SafeCast.h', 'Classes/NSDictionary+SafeCast.h', 'Classes/NSObject+SafeCast.h', 'Classes/NSOrderedSet+SafeCast.h', 'Classes/NSSet+SafeCast.h', 'Classes/SafeCast.h', 'Classes/SafeCastCollections.h']
 end
