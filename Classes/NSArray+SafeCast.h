@@ -49,7 +49,6 @@
  @param aSelector A selector that identifies the message to send to the objects in the array. The method must not take any arguments, and must not have the side effect of modifying the receiving array.
 
  @see safe_makeObjectsSafelyPerformSelector:withObject:
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector;
 
@@ -63,7 +62,6 @@
  @param anObject The object to send as the argument to each invocation of the aSelector method.
 
  @see safe_makeObjectsSafelyPerformSelector:
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
 
@@ -80,10 +78,9 @@
 
  This method executes synchronously.
 
- @param class
- The Class objects in the array must be a kind of for the block to be executed on
- @param block
- The block to apply to elements in the array.
+ @param class The Class objects in the array must be a kind of for the block to be executed on
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -91,20 +88,17 @@
  The index of the element in the array.
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the array.
 
- @param class
- The Class objects in the array must be a kind of for the block to be executed on
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @param block
- The block to apply to elements in the array.
+ @param class The Class objects in the array must be a kind of for the block to be executed on
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -116,22 +110,19 @@
  By default, the enumeration starts with the first object and continues serially through the array to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
 
  This method executes synchronously.
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the array at the specified indexes that are of the kind of the given Class.
 
- @param class
- The Class objects in the array must be a kind of for the block to be executed on
- @param indexSet
- The indexes of the objects over which to enumerate.
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @block block
- The block to apply to elements in the array.
+ @param class The Class objects in the array must be a kind of for the block to be executed on
+
+ @param indexSet The indexes of the objects over which to enumerate.
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -143,8 +134,6 @@
  By default, the enumeration starts with the first object and continues serially through the array to the last element specified by indexSet. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
 
  This method executes synchronously.
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsOfKind:(Class)class atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
@@ -156,11 +145,9 @@
 /**
  Returns the indexes of objects in the array that are of the kind of the given Class.
 
- @param class
- The Class objects in the array must be a kind of for their index to be returned in the index set
+ @param class The Class objects in the array must be a kind of for their index to be returned in the index set
 
- @return
- The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
+ @return The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
  */
 - (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
 
@@ -177,10 +164,9 @@
 
  This method executes synchronously.
 
- @param protocol
- The Protocol objects in the array must be a kind of for the block to be executed on
- @param block
- The block to apply to elements in the array.
+ @param protocol The Protocol objects in the array must be a kind of for the block to be executed on
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -190,20 +176,17 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
 
  @see safe_enumerateObjectsConformingToProtocol:withOptions:usingBlock:
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the array that conforms to the given protocol.
 
- @param protocol
- The Protocol objects in the array must be a kind of for the block to be executed on
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @param block
- The block to apply to elements in the array.
+ @param protocol The Protocol objects in the array must be a kind of for the block to be executed on
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -215,22 +198,19 @@
  By default, the enumeration starts with the first object and continues serially through the array to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
 
  This method executes synchronously.
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the array at the specified indexes that conform to the given protocol.
 
- @param protocol
- The Protocol objects in the array must be a kind of for the block to be executed on
- @param indexSet
- The indexes of the objects over which to enumerate.
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @block block
- The block to apply to elements in the array.
+ @param protocol The Protocol objects in the array must be a kind of for the block to be executed on
+
+ @param indexSet The indexes of the objects over which to enumerate.
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+ 
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -242,8 +222,6 @@
  By default, the enumeration starts with the first object and continues serially through the array to the last element specified by indexSet. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
 
  This method executes synchronously.
-
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
@@ -255,11 +233,9 @@
 /**
  Returns the indexes of objects in the array that conform to the given protocol.
 
- @param protocol
- The Protocol which objects in the array must conform to for their index to be returned in the index set
+ @param protocol The Protocol which objects in the array must conform to for their index to be returned in the index set
 
- @return
- The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
+ @return The indexes whose corresponding values in the array are the kind of object class passed. If no objects in the array pass the test, returns an empty index set.
  */
 - (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
 
@@ -277,8 +253,8 @@
  This method executes synchronously.
 
  @param selector The selector objects in the array must respond to for the block to be executed on
- @param block
- The block to apply to elements in the array.
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -286,19 +262,17 @@
  The index of the element in the array.
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
- 
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using each object in the array which can respond to the given selector.
- 
+
  @param selector The selector objects in the array must respond to for the block to be executed on
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @param block
- The block to apply to elements in the array.
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -308,22 +282,21 @@
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  
  By default, the enumeration starts with the first object and continues serially through the array to the last object. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
- 
+
  This method executes synchronously.
- 
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
 /**
  Executes a given block using the objects in the array at the specified indexes that respond to the given selector.
- 
+
  @param selector The selector objects in the array must respond to for the block to be executed on
+
  @param indexSet The indexes of the objects over which to enumerate.
- @param opts
- A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
- @block block
- The block to apply to elements in the array.
+
+ @param opts A bit mask that specifies the options for the enumeration (whether it should be performed concurrently and whether it should be performed in reverse order).
+
+ @param block The block to apply to elements in the array.
  The block takes three arguments:
  obj
  The element in the array.
@@ -331,12 +304,10 @@
  The index of the element in the array.
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the array. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
- 
+
  By default, the enumeration starts with the first object and continues serially through the array to the last element specified by indexSet. You can specify NSEnumerationConcurrent and/or NSEnumerationReverse as enumeration options to modify this behavior.
- 
+
  This method executes synchronously.
- 
- @methodgroup Sending Messages to Elements
  */
 - (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector atIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 
