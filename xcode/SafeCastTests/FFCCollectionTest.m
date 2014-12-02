@@ -471,7 +471,7 @@
     FFCProtocolTestObject *obj2 = [FFCProtocolTestObject new];
     NSSet *s = [NSSet setWithArray:@[@1, obj1, @2, obj2]];
     
-    XCTAssertNoThrow([s safe_makeObjectsSafelyPerformSelector:@selector(setNumber:) withObject:@3], @"Objects that do not implement `-setNumber` should not raise");
+    XCTAssertNoThrow([s safe_makeObjectsSafelyPerformSelector:@selector(setNumber:) withObject:@3], @"Objects that do not implement `-setNumber:` should not raise");
     XCTAssertEqualObjects(obj1.number, @3, @"known objects should have had methods called on it with correct object");
     XCTAssertEqualObjects(obj2.number, @3, @"known objects should have had methods called on it with correct object");
 }

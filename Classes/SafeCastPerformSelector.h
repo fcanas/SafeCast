@@ -36,8 +36,11 @@ if ([obj respondsToSelector:aSelector]) {[obj performSelector:aSelector SAFE_CAS
 
 #undef SAFE_CAST_WITH_OBJECT
 #define SAFE_CAST_WITH_OBJECT
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 SAFE_CAST_PERFORM
 
 #undef SAFE_CAST_WITH_OBJECT
 #define SAFE_CAST_WITH_OBJECT withObject:(id)anObject
 SAFE_CAST_PERFORM
+#pragma clang diagnostic pop

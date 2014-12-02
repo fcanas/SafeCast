@@ -1,5 +1,6 @@
 language: objective-c
 before_install:
+  - bundle install
   - cd xcode
 script: xctool -workspace SafeCast.xcworkspace -scheme SafeCast test -sdk iphonesimulator
 

@@ -35,7 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		477DEBA781EB41B392D3E3EB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		483BB0F2CB82A7BD249C930F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		75DBFF9502C2D8DDC075B75F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C0E10D05E51D418085703398 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71C896C18ADBA7A00CF3E2E /* SafeCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71C896F18ADBA7A00CF3E2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0B9DF340A3F069F2F513DD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75DBFF9502C2D8DDC075B75F /* Pods.debug.xcconfig */,
+				483BB0F2CB82A7BD249C930F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E71C896318ADBA7A00CF3E2E = {
 			isa = PBXGroup;
 			children = (
@@ -93,7 +103,7 @@
 				E71C898E18ADBA7A00CF3E2E /* SafeCastTests */,
 				E71C896E18ADBA7A00CF3E2E /* Frameworks */,
 				E71C896D18ADBA7A00CF3E2E /* Products */,
-				477DEBA781EB41B392D3E3EB /* Pods.xcconfig */,
+				D0B9DF340A3F069F2F513DD9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3DE585A44CEC4BA9BB111155 /* Copy Pods Resources */ = {
@@ -282,7 +292,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6DD703E649CD4D1BA87EAEA9 /* Check Pods Manifest.lock */ = {
@@ -438,7 +448,7 @@
 		};
 		E71C899918ADBA7A00CF3E2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
+			baseConfigurationReference = 75DBFF9502C2D8DDC075B75F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -452,7 +462,7 @@
 		};
 		E71C899A18ADBA7A00CF3E2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
+			baseConfigurationReference = 483BB0F2CB82A7BD249C930F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -466,7 +476,7 @@
 		};
 		E71C899C18ADBA7A00CF3E2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
+			baseConfigurationReference = 75DBFF9502C2D8DDC075B75F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -489,7 +499,7 @@
 		};
 		E71C899D18ADBA7A00CF3E2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 477DEBA781EB41B392D3E3EB /* Pods.xcconfig */;
+			baseConfigurationReference = 483BB0F2CB82A7BD249C930F /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (
