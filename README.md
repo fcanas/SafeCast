@@ -14,20 +14,20 @@ Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-l
 
 Do things like this:
 
-```
+```objc
 NSMutableArray *mArray = [NSMutableArray safe_cast:array];
 // `mArray` is nil if `array` is not a mutable array, or `array` if it is.
 ```
 
 Or only call methods on collection members that can respond to the selector.
 
-```
+```objc
 [array safe_makeObjectsSafelyPerformSelector:@selector(method)];
 ```
 
 Or enumerate with a block on objects that are of a specific kind.
 
-```
+```objc
 [array safe_enumerateObjectsOfKind:[MyObject class]
                         usingBlock:^(MyObject *obj, NSUInteger idx, BOOL *stop) {
                             [obj setNumber:@3];
@@ -36,7 +36,7 @@ Or enumerate with a block on objects that are of a specific kind.
 
 Or a protocol
 
-```
+```objc
 [array safe_enumerateObjectsConformingToProtocol:@protocol(MyProtocol)
                                       usingBlock:^(id<MyProtocol> *obj, NSUInteger idx, BOOL *stop) {
                                           [obj setNumber:@3];
@@ -55,7 +55,7 @@ Well, first of all, it's _really_ small. The documentation in the headers is _mu
 
 SafeCast is available as a [CocoaPod](http://guides.cocoapods.org/using/getting-started.html).
 
-```
+```ruby
 pod 'SafeCast'
 ```
 
