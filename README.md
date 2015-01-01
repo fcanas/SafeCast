@@ -8,7 +8,7 @@
 * Cast objects in Objective-C, not in C
 * Enumerate objects in collections only if they're of a certain kind, or conform to a protocol
 * Be Safe
-* Be Concice
+* Be Concise
 
 Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
