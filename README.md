@@ -12,7 +12,7 @@
 
 Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
 
-Do things like this:
+Conditional casting, not unlike Swift's `as?` operator:
 
 ```objc
 NSMutableArray *mArray = [NSMutableArray safe_cast:array];
