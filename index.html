@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Safecast by fcanas</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Safecast</h1>
+        <p>Safe casting for Objective-C</p>
+
+        <p class="view"><a href="https://github.com/fcanas/SafeCast">View the Project on GitHub <small>fcanas/SafeCast</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/fcanas/SafeCast/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fcanas/SafeCast/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fcanas/SafeCast">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="https://travis-ci.org/fcanas/SafeCast"><img src="http://img.shields.io/travis/fcanas/SafeCast.svg?style=flat" alt="CI Status"></a>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/v/SafeCast.svg?style=flat" alt="Version"></a>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/l/SafeCast.svg?style=flat" alt="License"></a>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/p/SafeCast.svg?style=flat" alt="Platform"></a></p>
+
+<ul>
+<li>Cast objects in Objective-C, not in C</li>
+<li>Enumerate objects in collections only if they're of a certain kind, or conform to a protocol</li>
+<li>Be Safe</li>
+<li>Be Concise</li>
+</ul>
+
+<p>Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.</p>
+
+<p>Conditional casting, not unlike Swift's <code>as?</code> operator:</p>
+
+<div class="highlight highlight-objc"><pre><span class="pl-s3">NSMutableArray</span> *mArray = [<span class="pl-s3">NSMutableArray</span> <span class="pl-s3">safe_cast:</span>array];
+<span class="pl-c">// `mArray` is nil if `array` is not a mutable array, or `array` if it is.</span></pre></div>
+
+<p>Or only call methods on collection members that can respond to the selector.</p>
+
+<div class="highlight highlight-objc"><pre>[array <span class="pl-s3">safe_makeObjectsSafelyPerformSelector:</span><span class="pl-st">@selector</span>(<span class="pl-s3">method</span>)];</pre></div>
+
+<p>Or enumerate with a block on objects that are of a specific kind.</p>
+
+<div class="highlight highlight-objc"><pre>[array <span class="pl-s3">safe_enumerateObjectsOfKind:</span>[MyObject <span class="pl-s3">class</span>]
+                        <span class="pl-s3">usingBlock:</span>^(MyObject *obj, NSUInteger idx, <span class="pl-st">BOOL</span> *stop) {
+                            [obj <span class="pl-s3">setNumber:</span>@<span class="pl-c1">3</span>];
+                        }];</pre></div>
+
+<p>Or a protocol</p>
+
+<div class="highlight highlight-objc"><pre>[array <span class="pl-s3">safe_enumerateObjectsConformingToProtocol:</span><span class="pl-st">@protocol</span>(MyProtocol)
+                                      <span class="pl-s3">usingBlock:</span>^(<span class="pl-st">id</span>&lt;MyProtocol&gt; *obj, NSUInteger idx, <span class="pl-st">BOOL</span> *stop) {
+                                          [obj <span class="pl-s3">setNumber:</span>@<span class="pl-c1">3</span>];
+                                      }];</pre></div>
+
+<p>SafeCast has quite a few methods like this, covering <code>NSArray</code>, <code>NSSet</code>, <code>NSDictionary</code>, and <code>NSOrderedSet</code>.</p>
+
+<p>I doubt it would be a good idea to give coverage to collections like <code>NSMapTable</code> or <code>NSHashTable</code>, so that's not planned.</p>
+
+<h2>
+<a id="a-whole-library-for-that" class="anchor" href="#a-whole-library-for-that" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Whole Library for <em>that</em>?</h2>
+
+<p>Well, first of all, it's <em>really</em> small. The documentation in the headers is <em>much</em> bigger than the code. And it's tested. You may not need it. But it has a lot of things going for it.</p>
+
+<h3>
+<a id="easy-to-integrate" class="anchor" href="#easy-to-integrate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy to integrate</h3>
+
+<p>SafeCast is available as a <a href="http://guides.cocoapods.org/using/getting-started.html">CocoaPod</a>.</p>
+
+<div class="highlight highlight-ruby"><pre>pod <span class="pl-s1"><span class="pl-pds">'</span>SafeCast<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="be-concice-and-direct-with-your-intent" class="anchor" href="#be-concice-and-direct-with-your-intent" aria-hidden="true"><span class="octicon octicon-link"></span></a>Be concice and direct with your intent</h3>
+
+<p>It definitely takes fewer lines of code. In my opinion it's easier to read and think about than the more verbose way of doing it safely. It keeps your type-safety checks up front and at a high level.</p>
+
+<h3>
+<a id="be-safe" class="anchor" href="#be-safe" aria-hidden="true"><span class="octicon octicon-link"></span></a>Be Safe</h3>
+
+<p>Maybe you know what you're doing. But do you always do the right thing? How many people are in your code base? And how well do they all know Objective-C's C underbelly? More and more developers are coming in having worked with higher-level or dynamic languages, and may not realize what's safe and what's not.</p>
+
+<p>SafeCast wants to make it easier to safely cast ... to cast only when it's safe to do so.</p>
+
+<h2>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status</h2>
+
+<p>Please send feedback, pull-requests, and coffee.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/fcanas">fcanas</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-2286078-12");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
