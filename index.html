@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Safecast by fcanas</title>
+    <title>SafeCast by fcanas</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,23 +15,12 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Safecast</h1>
+        <h1>SafeCast</h1>
         <p>Safe casting for Objective-C</p>
-
         <p class="view"><a href="https://github.com/fcanas/SafeCast">View the Project on GitHub <small>fcanas/SafeCast</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/fcanas/SafeCast/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/fcanas/SafeCast/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/fcanas/SafeCast">View On <strong>GitHub</strong></a></li>
-        </ul>
       </header>
       <section>
-        <p><a href="https://travis-ci.org/fcanas/SafeCast"><img src="http://img.shields.io/travis/fcanas/SafeCast.svg?style=flat" alt="CI Status"></a>
-<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/v/SafeCast.svg?style=flat" alt="Version"></a>
-<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/l/SafeCast.svg?style=flat" alt="License"></a>
-<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/p/SafeCast.svg?style=flat" alt="Platform"></a></p>
+<p>SafeCast offers conditional casting in Objective-C, not unlike Swift's <code>as?</code> operator:</p>
 
 <ul>
 <li>Cast objects in Objective-C, not in C</li>
@@ -41,8 +30,6 @@
 </ul>
 
 <p>Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.</p>
-
-<p>Conditional casting, not unlike Swift's <code>as?</code> operator:</p>
 
 <div class="highlight highlight-objc"><pre><span class="pl-s3">NSMutableArray</span> *mArray = [<span class="pl-s3">NSMutableArray</span> <span class="pl-s3">safe_cast:</span>array];
 <span class="pl-c">// `mArray` is nil if `array` is not a mutable array, or `array` if it is.</span></pre></div>
@@ -72,7 +59,7 @@
 <h2>
 <a id="a-whole-library-for-that" class="anchor" href="#a-whole-library-for-that" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Whole Library for <em>that</em>?</h2>
 
-<p>Well, first of all, it's <em>really</em> small. The documentation in the headers is <em>much</em> bigger than the code. And it's tested. You may not need it. But it has a lot of things going for it.</p>
+<p>SafeCast <em>really</em> small. The documentation in the headers is <em>much</em> bigger than the code. And it's tested. You may not need it. But it has a lot of things going for it.</p>
 
 <h3>
 <a id="easy-to-integrate" class="anchor" href="#easy-to-integrate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Easy to integrate</h3>
@@ -99,8 +86,12 @@
 <p>Please send feedback, pull-requests, and coffee.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/fcanas">fcanas</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      <p><a href="https://travis-ci.org/fcanas/SafeCast"><img src="http://img.shields.io/travis/fcanas/SafeCast.svg?style=flat" alt="CI Status"></a><br>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/v/SafeCast.svg?style=flat" alt="Version"></a><br>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/l/SafeCast.svg?style=flat" alt="License"></a><br>
+<a href="http://cocoadocs.org/docsets/SafeCast"><img src="https://img.shields.io/cocoapods/p/SafeCast.svg?style=flat" alt="Platform"></a></p>
+
+        <p><a href="https://github.com/fcanas/SafeCast">SafeCase</a> is written and maintained by <a href="https://github.com/fcanas">fcanas</a></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
