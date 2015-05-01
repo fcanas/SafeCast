@@ -6,9 +6,9 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   SafeCast:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  SafeCast: b9d43ffaea91877f7acbdb11d9ad504392d7e683
+  SafeCast: 2793023bdf33abb2f157f4a70d68850302c8b285
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.4
