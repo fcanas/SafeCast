@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)
 [![License](https://img.shields.io/cocoapods/l/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)
 [![Platform](https://img.shields.io/cocoapods/p/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)
+[![Coverage Status](https://coveralls.io/repos/fcanas/SafeCast/badge.svg?branch=build)](https://coveralls.io/r/fcanas/SafeCast?branch=build)
 
 * Cast objects in Objective-C, not in C
 * Enumerate objects in collections only if they're of a certain kind, or conform to a protocol

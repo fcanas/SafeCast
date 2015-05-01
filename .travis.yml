@@ -1,6 +1,12 @@
 language: objective-c
-before_install:
-  - bundle install
-  - cd xcode
-script: xctool -workspace SafeCast.xcworkspace -scheme SafeCast test -sdk iphonesimulator
-
+rvm:
+- 2.0.0 # For CocoaPods, which requires ruby 2.0 and above
+env:
+  global:
+  - LANG=en_US.UTF-8
+install:
+- bundle install --jobs=3
+script:
+- rake run_tests
+- rake lint_podspec
+after_success: slather
