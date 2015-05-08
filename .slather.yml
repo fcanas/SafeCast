@@ -1,2 +1,5 @@
 coverage_service: coveralls
 xcodeproj: xcode/SafeCast.xcodeproj
+source_directory: Classes/
+ignore:
+  - xcode/*
