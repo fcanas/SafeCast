@@ -25,7 +25,7 @@ LIBRARY_NAME = 'SafeCast'
 WORKSPACE_PATH = "xcode/#{LIBRARY_NAME}.xcworkspace"
 PODSPEC_PATH = "#{LIBRARY_NAME}.podspec"
 DERIVED_DATA_PATH = "#{ENV['HOME']}/Library/Developer/Xcode/DerivedData"
-DESTINATION = 'platform=iOS Simulator,name=iPhone 5,OS=latest'
+DESTINATION = 'platform=iOS Simulator,id=DB794781-65A7-4884-8D00-AAC3CBD39A44,OS=latest'
 
 LINT_TOOL = 'bundle exec pod lib lint'
 BUILD_TOOL = 'xcodebuild'
