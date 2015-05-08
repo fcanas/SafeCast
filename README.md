@@ -1,6 +1,6 @@
 # SafeCast
 
-[![CI Status](http://img.shields.io/travis/fcanas/SafeCast.svg?style=flat)](https://travis-ci.org/fcanas/SafeCast)
+[![Build Status](https://travis-ci.org/fcanas/SafeCast.svg?branch=master)](https://travis-ci.org/fcanas/SafeCast)
 [![Version](https://img.shields.io/cocoapods/v/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)
 [![License](https://img.shields.io/cocoapods/l/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)
 [![Platform](https://img.shields.io/cocoapods/p/SafeCast.svg?style=flat)](http://cocoadocs.org/docsets/SafeCast)

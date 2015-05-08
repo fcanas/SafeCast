@@ -1,4 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-link_with 'SafeCast', 'SafeCastTests'
-pod 'SafeCast', :path => '../'
+target 'SafeCast' do
+    pod 'SafeCast', :path => '../'
+    target 'SafeCastTests' do
+    end
+end
