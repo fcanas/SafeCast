@@ -11,13 +11,31 @@
 * Be Safe
 * Be Concise
 
-Objective-C is C, and C is perilous. Don't blindly cast objects. Stick to high-level language features, and write more readable code.
+Objective-C is C, and C is perilous. Don't blindly cast objects. Use high-level language constructs that communicate intent, and write more readable code.
 
 Conditional casting, not unlike Swift's `as?` operator:
 
 ```objc
 NSMutableArray *mArray = [NSMutableArray safe_cast:array];
 // `mArray` is nil if `array` is not a mutable array, or `array` if it is.
+```
+
+Conditionally execute code depending on whether an object is of a type, like Swift's `if let x = x as? Y` pattern"
+
+```objc
+@interface MyModel : NSObject {
+    @property (nonatomic, copy) NSString *someProperty;
+}
+
+id object;
+
+...
+
+[MyModel safe_cast:object intoBlock:^(MyModel *object){
+    // only executes if `object` is a kind of `MyClass`
+    // within this scope `object` is recognized as a `MyClass`
+    object.someProperty; // Perfectly safe!
+}];
 ```
 
 Or only call methods on collection members that can respond to the selector.
@@ -29,8 +47,8 @@ Or only call methods on collection members that can respond to the selector.
 Or enumerate with a block on objects that are of a specific kind.
 
 ```objc
-[array safe_enumerateObjectsOfKind:[MyObject class]
-                        usingBlock:^(MyObject *obj, NSUInteger idx, BOOL *stop) {
+[array safe_enumerateObjectsOfKind:[MyClass class]
+                        usingBlock:^(MyClass *obj, NSUInteger idx, BOOL *stop) {
                             [obj setNumber:@3];
                         }];
 ```
@@ -44,15 +62,15 @@ Or a protocol
                                       }];
 ```
 
-SafeCast has quite a few methods like this, covering `NSArray`, `NSSet`, `NSDictionary`, and `NSOrderedSet`.
+SafeCast has extensive coverage for conditional type-based enumeration on the standard Foundation collections: `NSArray`, `NSSet`, `NSDictionary`, and `NSOrderedSet`.
 
-I doubt it would be a good idea to give coverage to collections like `NSMapTable` or `NSHashTable`, so that's not planned.
+Due to complex memory ownership, `NSMapTable`, `NSHashTable`, and other collections are not supported.
 
 ## A Whole Library for _that_?
 
 Well, first of all, it's _really_ small. The documentation in the headers is _much_ bigger than the code. And it's tested. You may not need it. But it has a lot of things going for it.
 
-### Easy to integrate 
+### Easy to integrate
 
 SafeCast is available as a [CocoaPod](http://guides.cocoapods.org/using/getting-started.html).
 
@@ -60,9 +78,9 @@ SafeCast is available as a [CocoaPod](http://guides.cocoapods.org/using/getting-
 pod 'SafeCast'
 ```
 
-### Be concice and direct with your intent
+### Be concise and direct with your intent
 
-It definitely takes fewer lines of code. In my opinion it's easier to read and think about than the more verbose way of doing it safely. It keeps your type-safety checks up front and at a high level.
+It takes fewer lines of code than writing your own type checks. In my opinion it's easier to read and think about than the more verbose way of doing it safely. It keeps your type-safety checks up front and at a high level.
 
 ### Be Safe
 
@@ -73,3 +91,29 @@ SafeCast wants to make it easier to safely cast ... to cast only when it's safe 
 ## Status
 
 Please send feedback, pull-requests, and coffee.
+
+# License
+
+```
+Copyright (c) 2014-2015 Fabian Canas. All rights reserved.
+
+This code is distributed under the terms and conditions of the MIT license.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
