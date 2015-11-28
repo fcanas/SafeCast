@@ -181,6 +181,7 @@
 				E71C896918ADBA7A00CF3E2E /* Frameworks */,
 				E71C896A18ADBA7A00CF3E2E /* Resources */,
 				3DE585A44CEC4BA9BB111155 /* Copy Pods Resources */,
+				04971040DE2B340E22137E9F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +201,7 @@
 				E71C898418ADBA7A00CF3E2E /* Frameworks */,
 				E71C898518ADBA7A00CF3E2E /* Resources */,
 				2908BFBF8B0D42F585737DF5 /* Copy Pods Resources */,
+				8398872F98AC435F87145B70 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,6 +267,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		04971040DE2B340E22137E9F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2908BFBF8B0D42F585737DF5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +340,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8398872F98AC435F87145B70 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
