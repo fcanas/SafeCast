@@ -46,7 +46,7 @@
 
  @param block A block object to operate on entries in the dictionary.
  */
-- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsOfKind:(nonnull Class)class usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Applies a given block object to the entries of the dictionary if the are of the specified kind.
@@ -59,7 +59,7 @@
 
  If the block sets *stop to YES, the enumeration stops.
  */
-- (void)safe_enumerateKeysAndObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsOfKind:(nonnull Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 #pragma mark - Conforms to Protocol
 
@@ -74,7 +74,7 @@
 
  @param block A block object to operate on entries in the dictionary.
  */
-- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(nonnull Protocol *)protocol usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Applies a given block object to the entries of the dictionary if the conform to the specified Protocol.
@@ -87,7 +87,7 @@
 
  If the block sets *stop to YES, the enumeration stops.
  */
-- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsConformingToProtocol:(nonnull Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  @name Operations on objects that respond to a selector
@@ -100,7 +100,7 @@
 
  @param block A block object to operate on entries in the dictionary.
  */
-- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(nonnull SEL)selector usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Applies a given block object to the entries of the dictionary if the entry can respond to the given selector.
@@ -113,6 +113,6 @@
 
  If the block sets *stop to YES, the enumeration stops.
  */
-- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)safe_enumerateKeysAndObjectsRespondingToSelector:(nonnull SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id key, __nonnull id obj, BOOL * __nonnull stop))block;
 
 @end
