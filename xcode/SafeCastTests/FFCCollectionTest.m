@@ -167,13 +167,15 @@
 - (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock_legacy
 {
     NSArray *a = @[[NSObject new], [FFCTestObject new], [NSObject new], [FFCProtocolTestObject new]];
-    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     XCTAssertNoThrow([a safe_enumerateObjectsOfKind:[FFCTestObject class]
                                           AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                             options:kNilOptions
                                          usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                              [obj setNumber:@3];
                                          }], @"Objects that do not implement `-setNumber` should not raise");
+    #pragma clang diagnostic pop
     
     XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
@@ -238,14 +240,15 @@
 - (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock_legacy
 {
     NSArray *a = @[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]];
-    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     XCTAssertNoThrow([a safe_enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
                                                         AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                                           options:kNilOptions
                                                        usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                                            [obj setNumber:@3];
                                                        }], @"Objects that do not implement `-setNumber` should not raise");
-    
+    #pragma clang diagnostic pop
     XCTAssertNil([FFCTestObject safe_cast:a[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertNil([FFCTestObject safe_cast:a[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject safe_cast:a[3]].number, @3, @"known objects should have had methods called on it with correct object");
@@ -354,14 +357,15 @@
 - (void)testEnumerateObjectsOfKindAtIndexesOptionsUsingBlock_legacy
 {
     NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[@1, [FFCTestObject new], @2, [FFCProtocolTestObject new]]];
-    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     XCTAssertNoThrow([s safe_enumerateObjectsOfKind:[FFCTestObject class]
                                      AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                        options:kNilOptions
                                     usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                         [obj setNumber:@3];
                                     }], @"Objects that do not implement `-setNumber` should not raise");
-    
+    #pragma clang diagnostic pop
     XCTAssertNil([FFCTestObject safe_cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject safe_cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");
 }
@@ -425,14 +429,15 @@
 - (void)testEnumerateConformingToProtocolAtIndexesOptionsUsingBlock_legacy
 {
     NSOrderedSet *s = [NSOrderedSet orderedSetWithArray:@[[FFCTestObject new], [FFCProtocolTestObject new], [FFCTestObject new], [FFCProtocolTestObject new]]];
-    
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     XCTAssertNoThrow([s safe_enumerateObjectsConformingToProtocol:@protocol(FFCTestProtocol)
                                                    AtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 2)]
                                                      options:kNilOptions
                                                   usingBlock:^(FFCTestObject *obj, NSUInteger idx, BOOL *stop) {
                                                       [obj setNumber:@3];
                                                   }], @"Objects that do not implement `-setNumber` should not raise");
-    
+    #pragma clang diagnostic pop
     XCTAssertNil([FFCTestObject safe_cast:s[1]].number, @"known objects not included in the index set should not have had methods called on it");
     XCTAssertNil([FFCTestObject safe_cast:s[2]].number, @"objects not conforming to the protocol should not have had methods called on it");
     XCTAssertEqualObjects([FFCTestObject safe_cast:s[3]].number, @3, @"known objects should have had methods called on it with correct object");

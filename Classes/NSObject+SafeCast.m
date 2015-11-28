@@ -34,6 +34,7 @@
     if ([obj isKindOfClass:self]) {
         return obj;
     }
+
     return nil;
 }
 

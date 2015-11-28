@@ -48,7 +48,7 @@
  
  @see - safe_makeObjectsSafelyPerformSelector:withObject:
  */
-- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector;
+- (void)safe_makeObjectsSafelyPerformSelector:(nonnull SEL)aSelector;
 
 /**
  Sends a selector message to each object in the set, if and only if the object responds to the given selector.
@@ -61,7 +61,7 @@
 
  @see - safe_makeObjectsSafelyPerformSelector:
  */
-- (void)safe_makeObjectsSafelyPerformSelector:(SEL)aSelector withObject:(id)anObject;
+- (void)safe_makeObjectsSafelyPerformSelector:(nonnull SEL)aSelector withObject:(nonnull id)anObject;
 
 #pragma mark - Of Kind
 
@@ -85,7 +85,7 @@
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the set.
@@ -105,7 +105,7 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 #pragma mark - Protocols
 
@@ -129,7 +129,7 @@
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the set.
@@ -149,7 +149,7 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  @name Operations on objects that respond to a selector.
@@ -171,7 +171,7 @@
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  */
-- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsRespondingToSelector:(nonnull SEL)selector usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the set which can respond to the given selector.
@@ -191,6 +191,6 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block;
+- (void)safe_enumerateObjectsRespondingToSelector:(nonnull SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, BOOL * __nonnull stop))block;
 
 @end

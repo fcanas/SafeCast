@@ -57,7 +57,7 @@
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the ordered set that inherit from the given class.
@@ -79,7 +79,7 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using the objects in the ordered set at the specified indexes that inherit from the given class.
@@ -103,12 +103,12 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class atIndexes:(nonnull NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  @see safe_enumerateObjectsOfKind:atIndexes:options:usingBlock:
  */
-- (void)safe_enumerateObjectsOfKind:(Class)class AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block DEPRECATED_ATTRIBUTE;
+- (void)safe_enumerateObjectsOfKind:(nonnull Class)class AtIndexes:(nonnull NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block DEPRECATED_ATTRIBUTE;
 
 /**
  Returns the indexes of objects in the ordered set that are of the kind of the given Class.
@@ -117,7 +117,7 @@
 
  @return The indexes whose corresponding values in the ordered set are the kind of object class passed. If no objects in the ordered set pass the test, returns an empty index set.
  */
-- (NSIndexSet *)safe_indexesOfObjectsOfKind:(Class)class;
+- (nonnull NSIndexSet *)safe_indexesOfObjectsOfKind:(nonnull Class)class;
 
 #pragma mark - Conforms to Protocol
 
@@ -145,7 +145,7 @@
 
  @see – safe_enumerateObjectsWithOptions:usingBlock:
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the ordered set.
@@ -167,7 +167,7 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using the objects in the ordered set at the specified indexes.
@@ -190,12 +190,12 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol atIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol atIndexes:(nonnull NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  @see safe_enumerateObjectsConformingToProtocol:atIndexes:options:usingBlock:
  */
-- (void)safe_enumerateObjectsConformingToProtocol:(Protocol *)protocol AtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block DEPRECATED_ATTRIBUTE;
+- (void)safe_enumerateObjectsConformingToProtocol:(nonnull Protocol *)protocol AtIndexes:(nonnull NSIndexSet *)indexSet options:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block DEPRECATED_ATTRIBUTE;
 
 /**
  Returns the indexes of objects in the ordered set that conform to the given protocol.
@@ -204,7 +204,7 @@
 
  @return The indexes whose corresponding values in the ordered set are the kind of object class passed. If no objects in the ordered set pass the test, returns an empty index set.
  */
-- (NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(Protocol *)protocol;
+- (nonnull NSIndexSet *)safe_indexesOfObjectsConformingToProtocol:(nonnull Protocol *)protocol;
 
 #pragma mark - Responds to Selector
 
@@ -230,7 +230,7 @@
  stop
  A reference to a Boolean value. The block can set the value to YES to stop further processing of the ordered set. The stop argument is an out-only argument. You should only ever set this Boolean to YES within the Block.
  */
-- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsRespondingToSelector:(nonnull SEL)selector usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using each object in the ordered set which can respond to the given selector.
@@ -252,7 +252,7 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsRespondingToSelector:(nonnull SEL)selector withOptions:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 /**
  Executes a given block using the objects in the ordered set at the specified indexes which can respond to the given selector.
@@ -276,6 +276,6 @@
 
  This method executes synchronously.
  */
-- (void)safe_enumerateObjectsRespondingToSelector:(SEL)selector atIndexes:(NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)safe_enumerateObjectsRespondingToSelector:(nonnull SEL)selector atIndexes:(nonnull NSIndexSet *)s options:(NSEnumerationOptions)opts usingBlock:(nonnull void (^)(__nonnull id obj, NSUInteger idx, BOOL * __nonnull stop))block;
 
 @end
