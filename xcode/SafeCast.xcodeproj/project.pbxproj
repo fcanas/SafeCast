@@ -218,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FFC;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Fabián Cañas";
 				TargetAttributes = {
 					E71C898618ADBA7A00CF3E2E = {
@@ -394,6 +394,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -459,6 +460,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafeCast/SafeCast-Prefix.pch";
 				INFOPLIST_FILE = "SafeCast/SafeCast-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fabiancanas.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -473,6 +475,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafeCast/SafeCast-Prefix.pch";
 				INFOPLIST_FILE = "SafeCast/SafeCast-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fabiancanas.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -495,6 +498,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "SafeCastTests/SafeCastTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fabiancanas.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -514,6 +518,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SafeCast/SafeCast-Prefix.pch";
 				INFOPLIST_FILE = "SafeCastTests/SafeCastTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fabiancanas.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
