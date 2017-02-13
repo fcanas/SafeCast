@@ -8,4 +8,4 @@ install:
 script:
 - rake run_tests
 - rake lint_podspec
-after_success: slather
+after_success: bundle exec slather coverage

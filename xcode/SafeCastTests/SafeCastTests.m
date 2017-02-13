@@ -70,8 +70,12 @@
     XCTAssertEqual(ma, a, @"Should successfully cast a (mutable) array to a mutable array");
     XCTAssertEqual(a.firstObject, s, @"Should successfully execute the block passed to a cast mutable array.");
     
-    XCTAssertNil([NSMutableArray safe_cast:s], @"Should not cast a string to a mutable array");
-    XCTAssertNil([NSMutableArray safe_cast:[NSArray array]], @"Should not cast an array to a mutable array");
+    XCTAssertNil([NSMutableArray safe_cast:s intoBlock:^(id _Nonnull never) {
+        XCTFail(@"Non conforming object should not execute block");
+    }], @"Should not cast a string to a mutable array");
+    XCTAssertNil([NSMutableArray safe_cast:[NSArray array] intoBlock:^(id _Nonnull never) {
+        XCTFail(@"Non conforming object should not execute block");
+    }], @"Should not cast an array to a mutable array");
 }
 
 @end

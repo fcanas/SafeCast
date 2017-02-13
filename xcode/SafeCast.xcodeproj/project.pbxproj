@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3366E707D2E8838C3EAB647F /* libPods-SafeCast-SafeCastTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F1674CA3A01EADF05421B7 /* libPods-SafeCast-SafeCastTests.a */; };
-		C27B0D2CAC48713BD7EF5B28 /* libPods-SafeCast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4A8A494997B34443706DA6 /* libPods-SafeCast.a */; };
+		77FC192A22F953DEBDC6A7C6 /* libPods-SafeCast-SafeCastTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7110A743E83B5A6601ABF80C /* libPods-SafeCast-SafeCastTests.a */; };
+		D6C264C8380D3BB252352A19 /* libPods-SafeCast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1706DAB0197147865EC0E247 /* libPods-SafeCast.a */; };
 		E71C897018ADBA7A00CF3E2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71C896F18ADBA7A00CF3E2E /* Foundation.framework */; };
 		E71C897218ADBA7A00CF3E2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71C897118ADBA7A00CF3E2E /* CoreGraphics.framework */; };
 		E71C897418ADBA7A00CF3E2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71C897318ADBA7A00CF3E2E /* UIKit.framework */; };
@@ -35,11 +35,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3C4A8A494997B34443706DA6 /* libPods-SafeCast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeCast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D886A8B9704156414EE5821 /* Pods-SafeCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast.debug.xcconfig"; sourceTree = "<group>"; };
-		7E94100CB697630C0A6F4B2B /* Pods-SafeCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast.release.xcconfig"; sourceTree = "<group>"; };
-		90F1674CA3A01EADF05421B7 /* libPods-SafeCast-SafeCastTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeCast-SafeCastTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0202201A758BB06715EBFEE /* Pods-SafeCast-SafeCastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast-SafeCastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests.release.xcconfig"; sourceTree = "<group>"; };
+		1706DAB0197147865EC0E247 /* libPods-SafeCast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeCast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F990A530A23C14FE5957DB7 /* Pods-SafeCast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast.release.xcconfig"; sourceTree = "<group>"; };
+		465963F1CC9FAACF97FBC488 /* Pods-SafeCast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast.debug.xcconfig"; sourceTree = "<group>"; };
+		7110A743E83B5A6601ABF80C /* libPods-SafeCast-SafeCastTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SafeCast-SafeCastTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74DE28252123EAFAED21FE23 /* Pods-SafeCast-SafeCastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast-SafeCastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A903AE69B15DB94EFD38005E /* Pods-SafeCast-SafeCastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast-SafeCastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests.release.xcconfig"; sourceTree = "<group>"; };
 		E71C896C18ADBA7A00CF3E2E /* SafeCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71C896F18ADBA7A00CF3E2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E71C897118ADBA7A00CF3E2E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,7 +60,6 @@
 		E7735ADF198D71EF00135C7B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E7735AE0198D71F900135C7B /* SafeCast.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = SafeCast.podspec; path = ../SafeCast.podspec; sourceTree = "<group>"; };
 		E7B409F618B004780017967E /* FFCCollectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFCCollectionTest.m; sourceTree = "<group>"; };
-		EFB13F462C77E32EF64BFC6B /* Pods-SafeCast-SafeCastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SafeCast-SafeCastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +70,7 @@
 				E71C897218ADBA7A00CF3E2E /* CoreGraphics.framework in Frameworks */,
 				E71C897418ADBA7A00CF3E2E /* UIKit.framework in Frameworks */,
 				E71C897018ADBA7A00CF3E2E /* Foundation.framework in Frameworks */,
-				C27B0D2CAC48713BD7EF5B28 /* libPods-SafeCast.a in Frameworks */,
+				D6C264C8380D3BB252352A19 /* libPods-SafeCast.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,20 +81,20 @@
 				E71C898918ADBA7A00CF3E2E /* XCTest.framework in Frameworks */,
 				E71C898B18ADBA7A00CF3E2E /* UIKit.framework in Frameworks */,
 				E71C898A18ADBA7A00CF3E2E /* Foundation.framework in Frameworks */,
-				3366E707D2E8838C3EAB647F /* libPods-SafeCast-SafeCastTests.a in Frameworks */,
+				77FC192A22F953DEBDC6A7C6 /* libPods-SafeCast-SafeCastTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		91E7B3A5DF7403976DA0BF79 /* Pods */ = {
+		8CD0F73A8048F967444FE762 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6D886A8B9704156414EE5821 /* Pods-SafeCast.debug.xcconfig */,
-				7E94100CB697630C0A6F4B2B /* Pods-SafeCast.release.xcconfig */,
-				EFB13F462C77E32EF64BFC6B /* Pods-SafeCast-SafeCastTests.debug.xcconfig */,
-				A0202201A758BB06715EBFEE /* Pods-SafeCast-SafeCastTests.release.xcconfig */,
+				465963F1CC9FAACF97FBC488 /* Pods-SafeCast.debug.xcconfig */,
+				2F990A530A23C14FE5957DB7 /* Pods-SafeCast.release.xcconfig */,
+				74DE28252123EAFAED21FE23 /* Pods-SafeCast-SafeCastTests.debug.xcconfig */,
+				A903AE69B15DB94EFD38005E /* Pods-SafeCast-SafeCastTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -108,7 +108,7 @@
 				E71C898E18ADBA7A00CF3E2E /* SafeCastTests */,
 				E71C896E18ADBA7A00CF3E2E /* Frameworks */,
 				E71C896D18ADBA7A00CF3E2E /* Products */,
-				91E7B3A5DF7403976DA0BF79 /* Pods */,
+				8CD0F73A8048F967444FE762 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,8 +128,8 @@
 				E71C897118ADBA7A00CF3E2E /* CoreGraphics.framework */,
 				E71C897318ADBA7A00CF3E2E /* UIKit.framework */,
 				E71C898818ADBA7A00CF3E2E /* XCTest.framework */,
-				3C4A8A494997B34443706DA6 /* libPods-SafeCast.a */,
-				90F1674CA3A01EADF05421B7 /* libPods-SafeCast-SafeCastTests.a */,
+				1706DAB0197147865EC0E247 /* libPods-SafeCast.a */,
+				7110A743E83B5A6601ABF80C /* libPods-SafeCast-SafeCastTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,12 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E71C899818ADBA7A00CF3E2E /* Build configuration list for PBXNativeTarget "SafeCast" */;
 			buildPhases = (
-				830825AC49B74DD89536951C /* [CP] Check Pods Manifest.lock */,
+				0A11E97C073078E3F6677B8B /* [CP] Check Pods Manifest.lock */,
 				E71C896818ADBA7A00CF3E2E /* Sources */,
 				E71C896918ADBA7A00CF3E2E /* Frameworks */,
 				E71C896A18ADBA7A00CF3E2E /* Resources */,
-				2FCACB4ADDFEEA033284ADBD /* [CP] Embed Pods Frameworks */,
-				56B0040CB27CA2B13484F95C /* [CP] Copy Pods Resources */,
+				8043B84320B16747FDBDE047 /* [CP] Embed Pods Frameworks */,
+				5906FC136D826012154CD35E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,12 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E71C899B18ADBA7A00CF3E2E /* Build configuration list for PBXNativeTarget "SafeCastTests" */;
 			buildPhases = (
-				088F49642FFB5048E67C832F /* [CP] Check Pods Manifest.lock */,
+				EE1D84A18D26AC6F29694315 /* [CP] Check Pods Manifest.lock */,
 				E71C898318ADBA7A00CF3E2E /* Sources */,
 				E71C898418ADBA7A00CF3E2E /* Frameworks */,
 				E71C898518ADBA7A00CF3E2E /* Resources */,
-				6E4FB828DE73C3C9D15AF2ED /* [CP] Embed Pods Frameworks */,
-				0D4CDBDA5356A6A95DE09A60 /* [CP] Copy Pods Resources */,
+				B6BC0F0768BE8C0CF757D935 /* [CP] Embed Pods Frameworks */,
+				0BBBB927BD474B121CA2D876 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -226,7 +226,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FFC;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Fabián Cañas";
 				TargetAttributes = {
 					E71C898618ADBA7A00CF3E2E = {
@@ -273,7 +273,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		088F49642FFB5048E67C832F /* [CP] Check Pods Manifest.lock */ = {
+		0A11E97C073078E3F6677B8B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,7 +288,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		0D4CDBDA5356A6A95DE09A60 /* [CP] Copy Pods Resources */ = {
+		0BBBB927BD474B121CA2D876 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,22 +303,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2FCACB4ADDFEEA033284ADBD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		56B0040CB27CA2B13484F95C /* [CP] Copy Pods Resources */ = {
+		5906FC136D826012154CD35E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -333,7 +318,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E4FB828DE73C3C9D15AF2ED /* [CP] Embed Pods Frameworks */ = {
+		8043B84320B16747FDBDE047 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SafeCast/Pods-SafeCast-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6BC0F0768BE8C0CF757D935 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,7 +348,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SafeCast-SafeCastTests/Pods-SafeCast-SafeCastTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		830825AC49B74DD89536951C /* [CP] Check Pods Manifest.lock */ = {
+		EE1D84A18D26AC6F29694315 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -427,16 +427,21 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -449,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -468,22 +473,27 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -491,7 +501,7 @@
 		};
 		E71C899918ADBA7A00CF3E2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D886A8B9704156414EE5821 /* Pods-SafeCast.debug.xcconfig */;
+			baseConfigurationReference = 465963F1CC9FAACF97FBC488 /* Pods-SafeCast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -506,7 +516,7 @@
 		};
 		E71C899A18ADBA7A00CF3E2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E94100CB697630C0A6F4B2B /* Pods-SafeCast.release.xcconfig */;
+			baseConfigurationReference = 2F990A530A23C14FE5957DB7 /* Pods-SafeCast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -521,7 +531,7 @@
 		};
 		E71C899C18ADBA7A00CF3E2E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFB13F462C77E32EF64BFC6B /* Pods-SafeCast-SafeCastTests.debug.xcconfig */;
+			baseConfigurationReference = 74DE28252123EAFAED21FE23 /* Pods-SafeCast-SafeCastTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -545,7 +555,7 @@
 		};
 		E71C899D18ADBA7A00CF3E2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0202201A758BB06715EBFEE /* Pods-SafeCast-SafeCastTests.release.xcconfig */;
+			baseConfigurationReference = A903AE69B15DB94EFD38005E /* Pods-SafeCast-SafeCastTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SafeCast.app/SafeCast";
 				FRAMEWORK_SEARCH_PATHS = (

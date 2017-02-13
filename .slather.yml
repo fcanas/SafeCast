@@ -1,5 +1,7 @@
 coverage_service: coveralls
+workspace: xcode/SafeCast.xcworkspace
 xcodeproj: xcode/SafeCast.xcodeproj
+scheme: SafeCast_
 source_directory: Classes/
 ignore:
   - xcode/*
